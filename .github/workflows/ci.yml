@@ -1,0 +1,33 @@
+# Quality-gate CI — turns the Definition of Done into an enforced gate.
+# Templated: fill the {{...}} steps once the stack/commands exist (Phase 1).
+# Until then this workflow is a no-op scaffold and is safe to keep.
+
+name: ci
+
+on:
+  workflow_dispatch:
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Toolchain setup (uncomment/replace for your stack) ---
+      # - uses: actions/setup-node@v4
+      #   with: { node-version: '{{VERSION}}' }
+
+      - name: Install
+        run: echo "TODO {{INSTALL_COMMAND}}" # e.g. npm ci
+
+      - name: Lint
+        run: echo "TODO {{LINT_COMMAND}}"
+
+      - name: Typecheck
+        run: echo "TODO {{TYPECHECK_COMMAND}}" # drop if untyped
+
+      - name: Test
+        run: echo "TODO {{TEST_COMMAND}}"
+
+      - name: Build
+        run: echo "TODO {{BUILD_COMMAND}}"

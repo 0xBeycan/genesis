@@ -1,0 +1,32 @@
+# --- Secrets & environment ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Dependencies ---
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+
+# --- Build output / artifacts ---
+dist/
+build/
+out/
+target/
+*.log
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# --- Coverage / caches ---
+coverage/
+.cache/
+.tmp/
