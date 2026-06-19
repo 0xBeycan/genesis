@@ -153,6 +153,13 @@ them pick. Possible layers (not a checklist to force):
 - **Storage** — files/assets/blobs (if needed).
 - **Heavy/external compute or third-party APIs** — a separate runtime "world"?
 - Pin **versions** where it matters (record in `stack.md`).
+- **Choose modern, non-deprecated tooling defaults — don't carry legacy ones.**
+  When pinning a compiler/runtime config, avoid options already deprecated and
+  slated for removal. _Example (TypeScript):_ don't use `moduleResolution: "node"`/
+  `"node10"` or `baseUrl` — both are removed in TS 7.0. Use `moduleResolution:
+  "bundler"` (bundled libs/apps) or `"nodenext"` (Node services), and express
+  path aliases via `paths` (relative, no `baseUrl`). Carrying a legacy default
+  into a fresh project just schedules a forced migration later.
 
 > For every layer that depends on an **external vendor**, default to **provider
 > independence**: put it behind an interface/adapter so it can be swapped. Confirm
