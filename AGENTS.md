@@ -41,6 +41,9 @@ Conversation with the user may be in any language.
 - **Provider independence:** external vendors sit behind interfaces/adapters.
 - **Module boundaries:** domains don't import each other; shared contracts live
   in one place. Small, single-responsibility files.
+- **Tests are first-class:** every project picks a stack-appropriate test runner
+  in Phase 1 and keeps it green. Behavior-changing code ships with tests; in the
+  spec lane, write the test first. Details: `docs/process/conventions.md` §Testing.
 - **Definition of Done is a gate:** `docs/process/definition-of-done.md`.
 - **Two lanes, shared invariants:** work runs in a **vibe** or a **spec** lane
   (`docs/process/workflow.md`). The memory bank, module boundaries, repo
@@ -55,6 +58,7 @@ Conversation with the user may be in any language.
 - Hardcode a single external vendor.
 - Build a contract-dependent part before its contract exists.
 - Break module boundaries.
+- Ship behavior-changing code with no test for it.
 - Auto-commit without being asked.
 
 ## 4. Tech stack
@@ -102,7 +106,7 @@ any tool at any time later.
 
 Portable, tool-agnostic capabilities live in `skills/` (see `skills/README.md`).
 Built-in general skills: `wrap-session`, `write-adr`, `review-own-diff`,
-`clean-code`. Project-specific skills are researched and added after the
+`clean-code`, `write-tests`. Project-specific skills are researched and added after the
 interview based on the stack/project type.
 
 ## 9. MCP & external tools

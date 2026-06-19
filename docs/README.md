@@ -16,7 +16,8 @@ Who writes what:
 | `architecture/adr/`      | One Architecture Decision Record per decision.   |
 | `design/`                | Design system (only if there is a UI).           |
 | `process/workflow.md`    | The two lanes (vibe / spec) + shared invariants. |
-| `process/conventions.md` | Naming / API shape / errors / commits.           |
+| `process/conventions.md` | Naming / API shape / logging / errors / commits. |
+| `process/security.md`    | Secrets, authz, input, dependencies, disclosure. |
 | `process/definition-of-done.md` | Quality gates.                            |
 | `process/automation.md`  | CI + hooks that enforce the gate.                |
 | `process/ai-session-protocol.md` | Start/end-of-session ritual.             |

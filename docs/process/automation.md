@@ -5,9 +5,12 @@ stack solidifies (Phase 1+), so the gate doesn't depend on anyone remembering.
 
 ## CI
 
-`.github/workflows/ci.yml` runs the quality gate (install · lint · typecheck ·
-test · build) on push and pull requests. It ships as a templated no-op; fill the
-`{{...}}` commands once they exist. Replace with your platform's CI if not GitHub.
+`.github/workflows/ci.yml` defines the quality gate (install · lint · typecheck ·
+test · build). It **ships as a templated no-op triggered only by
+`workflow_dispatch`** — safe to keep while the commands are placeholders. Once the
+`{{...}}` commands are real (Phase 1), fill them **and** switch the trigger to
+`push` / `pull_request` so the gate runs automatically. Replace with your
+platform's CI if not GitHub.
 
 ## Local / pre-commit (optional)
 

@@ -8,9 +8,11 @@ not a wish list.
 - [ ] **Contracts** — schemas/types exist before the code that depends on them.
 - [ ] **Lint** passes.
 - [ ] **Typecheck** passes (if the stack is typed).
-- [ ] **Tests** pass (and cover the new behavior).
+- [ ] **Tests** — a stack-appropriate runner is configured; new/changed behavior
+      has a test (written first in the spec lane); the whole suite passes.
 - [ ] **Format** applied.
-- [ ] **Security** — no secrets committed; authorization is deny-by-default.
+- [ ] **Security** — no secrets/PII committed or logged; authorization is
+      deny-by-default; new deps vetted (`docs/process/security.md`).
 - [ ] **Design** — respects the design system (if there is a UI).
 - [ ] **Docs/memory** — `docs/memory/progress.md` updated; ADR added if a
       decision was made.

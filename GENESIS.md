@@ -85,11 +85,11 @@ docs/
   design/                          # only if the project has a UI
     design-system.md               # tokens, components, performance budget
   process/
-    workflow.md                    # the dev loop everyone follows
-    conventions.md                 # naming / API shape / errors / commits
+    workflow.md                    # the two lanes (vibe / spec) + shared invariants
+    conventions.md                 # naming / API shape / logging / errors / commits
+    security.md                    # secrets, authz, input, dependencies, disclosure
     definition-of-done.md          # quality gates
     ai-session-protocol.md         # start/end-of-session ritual
-    workflow.md                    # the two lanes (vibe / spec) + shared invariants
     automation.md                  # CI + hooks that enforce the gate
   features/
     _template.md                   # spec-before-code template
@@ -170,6 +170,10 @@ them pick. Possible layers (not a checklist to force):
   one authority for something? Name it.
 - **Contract-first rules** — is there anything that must not be built before its
   contract/schema/spec exists? Name it.
+- **Performance expectations** — are there latency/throughput targets or budgets
+  worth stating up front (e.g. an endpoint's p95, a job's runtime)? Stack-specific
+  and optional, but ask early; record any that the user names. (UI projects also
+  get a perf budget in the design system — §E.)
 
 ### E. Design (only if there is a UI)
 
@@ -202,6 +206,11 @@ them pick. Possible layers (not a checklist to force):
   fill `AGENTS.md` §10; otherwise leave it out.
 - **Commit convention** (e.g. Conventional Commits) + branch naming.
 - **Commit-on-demand** rule (recommended: never commit unless asked).
+- **Testing (always ask — not optional).** Which **test runner** fits the chosen
+  stack (Vitest/Jest, pytest, `go test`, …)? Confirm the levels that apply
+  (unit / integration / e2e), a coverage floor, and that **test-first** holds in
+  the spec lane. A project is never set up without a configured runner; record
+  the command in `AGENTS.md` §6 and `.github/workflows/ci.yml`.
 - **Quality gates** for Definition of Done (lint, typecheck, tests, format — as
   applicable). Fill the CI commands in `.github/workflows/ci.yml` once known.
 - **Non-obvious patterns** — capture any known footguns/gotchas into `AGENTS.md`
@@ -276,10 +285,13 @@ Create the tree from §1. Guidance per file:
   performance budget, accessibility, brand.
 
 - **`docs/process/*`.**
-  - `workflow.md` — the loop: `READ → SPEC → PLAN → BUILD → VERIFY → RECORD → COMMIT`.
+  - `workflow.md` — the loop: `READ → SPEC → TEST → PLAN → BUILD → VERIFY → RECORD → COMMIT`.
   - `conventions.md` — naming, project structure, API shape (success/error
-    envelopes), errors & logging, realtime events, authorization (deny-by-default),
-    validation/config, testing, commits & branches. Include only what applies.
+    envelopes), logging & observability, errors, realtime events, authorization
+    (deny-by-default), validation/config, testing, commits & branches. Include
+    only what applies.
+  - `security.md` — secrets handling, authorization, input validation,
+    dependency/supply-chain hygiene, vulnerability disclosure.
   - `definition-of-done.md` — the quality-gate checklist (code, contracts, design,
     security, docs/memory, UX).
   - `ai-session-protocol.md` — the start/during/end ritual in detail.
@@ -319,18 +331,22 @@ tomorrow a human, next week another team". Bake them into the generated docs:
    (when the domain has long-running jobs).
 8. **Module boundaries / no spaghetti.** Domains don't import each other; shared
    contracts live in one place. Small, single-responsibility files. No god classes.
-9. **Definition of Done is a gate.** Lint + typecheck + tests + format + docs +
-   memory update, every time (as applicable to the stack).
-10. **Respect the design system** (if there is a UI): tokens/components, stylish
+9. **Test-first, always tested.** Every project configures a stack-appropriate
+   test runner in Phase 1; behavior-changing code ships with a test (written
+   first in the spec lane). Tests assert behavior/contracts, not implementation.
+10. **Definition of Done is a gate.** Lint + typecheck + tests + format + docs +
+    memory update, every time (as applicable to the stack).
+11. **Respect the design system** (if there is a UI): tokens/components, stylish
     but fast.
-11. **Conventional Commits** (or the chosen convention), and **commit only when
+12. **Conventional Commits** (or the chosen convention), and **commit only when
     the user asks.**
-12. **Comments explain "why", not "what".** Repo language only.
+13. **Comments explain "why", not "what".** Repo language only.
 
 > **NEVER:** write the wrong language into the repo · commit secrets (`.env`,
 > keys) · commit large binaries/build artifacts · hardcode a single external
 > vendor · build a contract-dependent part before its contract exists · break
-> module boundaries · auto-commit without being asked.
+> module boundaries · ship behavior-changing code with no test · auto-commit
+> without being asked.
 
 ---
 

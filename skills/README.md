@@ -29,6 +29,8 @@ These ship with the Genesis skeleton and apply to any project:
   before declaring it done.
 - **`clean-code`** — general code-quality rules (small single-responsibility
   files, naming, error handling, "why" comments, no god classes).
+- **`write-tests`** — drive a change with tests: turn acceptance criteria into a
+  failing test first, pin behavior/contracts, keep the suite green.
 
 ## Project-specific (added after the interview)
 

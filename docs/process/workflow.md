@@ -23,16 +23,18 @@ pre-alpha and there is no one to review a PR anyway.
 ### 🏛️ Spec lane (ceremony) — load-bearing / team / post-alpha
 
 ```
-READ → SPEC → PLAN → BUILD → VERIFY → RECORD → COMMIT
+READ → SPEC → TEST → PLAN → BUILD → VERIFY → RECORD → COMMIT
 ```
 
 1. **READ** — `AGENTS.md` + memory bank.
 2. **SPEC** — write/update `docs/features/<name>.md` first.
-3. **PLAN** — outline the change; open an ADR for any architecture/tech decision.
-4. **BUILD** — implement within module boundaries.
-5. **VERIFY** — run the Definition of Done gate.
-6. **RECORD** — update the memory bank.
-7. **COMMIT** — only when asked; {{COMMIT_CONVENTION}} _(default: Conventional Commits)_.
+3. **TEST** — turn the spec's acceptance criteria into a failing test before the
+   code (test-first); see `conventions.md` §Testing.
+4. **PLAN** — outline the change; open an ADR for any architecture/tech decision.
+5. **BUILD** — implement within module boundaries until the test goes green.
+6. **VERIFY** — run the Definition of Done gate.
+7. **RECORD** — update the memory bank.
+8. **COMMIT** — only when asked; {{COMMIT_CONVENTION}} _(default: Conventional Commits)_.
 
 > Full **Spec-Driven Development** (spec-first + **PR review** ceremony) becomes
 > the default **after alpha/beta**, when there is a team or a reviewer. Before
@@ -47,8 +49,10 @@ These are what make lane-switching safe:
    in any lane. This is the rot-guard.
 2. **Module boundaries** hold; shared contracts in one place.
 3. **Repo language** only; comments explain "why".
-4. **No secrets, no large artifacts** committed.
-5. **Commit only when asked.**
+4. **Behavior-changing code ships with a test** that lands in the same change
+   (test-first in the spec lane; may follow the code in the vibe lane).
+5. **No secrets, no large artifacts** committed.
+6. **Commit only when asked.**
 
 ## Switching lanes
 

@@ -12,7 +12,7 @@ The ritual every agent (and human) follows so that work survives handoffs.
 
 ## During the session
 
-- Follow the `workflow.md` loop: READ → SPEC → PLAN → BUILD → VERIFY → RECORD → COMMIT.
+- Follow the `workflow.md` loop: READ → SPEC → TEST → PLAN → BUILD → VERIFY → RECORD → COMMIT.
 - Open an ADR the moment an architecture/tech decision is made.
 - Keep changes inside module boundaries; don't break contracts.
 
