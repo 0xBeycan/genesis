@@ -70,8 +70,8 @@ the user asks. Trim parts that don't apply to the project's shape (e.g. drop
 ```
 README.txt                         # NFO-style human + agent entry point → AGENTS.md
 AGENTS.md                          # SINGLE SOURCE OF TRUTH (rules, stack, repo map)
-CLAUDE.md                          # thin wrapper → points to AGENTS.md
-.cursor/rules/000-start-here.mdc   # alwaysApply rule → injects the entry protocol
+CLAUDE.md                          # thin wrapper → points to AGENTS.md (Claude Code; ships by default)
+.cursor/rules/000-start-here.mdc   # other tools' entry files (Cursor/Codex/Copilot/Gemini) — generated on demand only when that tool is in use
 docs/
   README.md                        # docs index / map
   product/
