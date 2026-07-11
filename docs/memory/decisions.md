@@ -2,6 +2,9 @@
 
 > One short line per locked decision, newest on top, linking its ADR.
 
+- Vendored `ponytail` (minimal-code discipline) + `caveman` (terse chat output)
+  as always-on built-in skills; context-compression proxies (Headroom) rejected →
+  [ADR-0004](../architecture/adr/0004-vendor-ponytail-caveman-skills.md)
 - Test-first discipline with a stack-appropriate runner; tests are first-class,
   not optional →
   [ADR-0003](../architecture/adr/0003-test-first-discipline.md)

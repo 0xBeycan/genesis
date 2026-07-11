@@ -28,3 +28,6 @@ Always, while writing or changing code — independent of stack or lane.
 This is the always-on baseline. Project-type skills (added after the interview)
 layer stack-specific conventions on top — they refine these rules, never relax
 them.
+
+`ponytail` is the always-on sibling: this skill governs the **shape** of the
+code, `ponytail` governs **how much** of it exists. They apply together.

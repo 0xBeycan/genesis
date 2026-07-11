@@ -2,6 +2,29 @@
 
 > Newest entry on top. Each entry: what changed + the **Next step**.
 
+## 2026-07-11 — Vendor ponytail + caveman skills (less code, fewer tokens)
+
+- Vendored two MIT upstreams as always-on built-in skills, distilled to their
+  rulesets (no hooks/plugins): `skills/ponytail/` (the "does this need to
+  exist" ladder — YAGNI → reuse → stdlib → native → dep → one line → minimum)
+  and `skills/caveman/` (terse chat output, ~65% fewer output tokens; never
+  compresses repo files). Recorded in
+  [ADR-0004](../architecture/adr/0004-vendor-ponytail-caveman-skills.md).
+- Reconciled with existing governance instead of copying blindly: ponytail's
+  minimal self-check rule is overridden by test-first (ADR-0003); its
+  no-single-impl-abstraction rule yields to provider independence; caveman got
+  a hard repository-file boundary; wenyan levels trimmed.
+- No existing rules turned out redundant — division of labor documented:
+  `clean-code` = shape of code, `ponytail` = amount of code, `caveman` = chat
+  output. Cross-references added in `clean-code`.
+- Updated the skill lists in `AGENTS.md` §8, `GENESIS.md` §1 tree + interview
+  §F (also added the previously missing `write-tests` there), `skills/README.md`.
+- Evaluated and rejected context-compression proxies (Headroom): machine-level,
+  ~15–20% realistic gain for coding agents, provider-cache/quality risk —
+  rationale in ADR-0004.
+- **Next step:** run the Genesis interview to fill `{{...}}`, or revisit issue
+  templates/CODEOWNERS if/when a second contributor joins.
+
 ## 2026-06-19 — Close governance gaps (security, logging, PR template, CI doc)
 
 - Added `docs/process/security.md` (secrets, authz, input, dependency/supply-chain

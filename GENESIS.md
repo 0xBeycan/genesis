@@ -99,6 +99,7 @@ docs/
     decisions.md                   # short decision log (the "why", newest on top)
 skills/                            # portable, tool-agnostic SKILL.md capabilities
   README.md _template/ wrap-session/ write-adr/ review-own-diff/ clean-code/
+  write-tests/ ponytail/ caveman/
 .github/workflows/ci.yml           # templated quality-gate CI (no-op until filled)
 .gitignore .editorconfig ...       # ignores + baseline tooling config
 ```
@@ -199,9 +200,11 @@ them pick. Possible layers (not a checklist to force):
   same invariants (`docs/process/workflow.md`). Default to **vibe** while
   solo/pre-alpha; confirm when the spec lane + PR review takes over (alpha/beta).
 - **Skills** — the built-in general skills (`wrap-session`, `write-adr`,
-  `review-own-diff`, `clean-code`) ship already. Ask whether to **research and
-  add project-type skills** (from skill registries / the web) for the chosen
-  stack, into `skills/`.
+  `review-own-diff`, `clean-code`, `write-tests`, `ponytail`, `caveman`) ship
+  already; `ponytail` (minimal code) and `caveman` (terse chat output) are
+  always-on baselines ([ADR-0004](docs/architecture/adr/0004-vendor-ponytail-caveman-skills.md)).
+  Ask whether to **research and add project-type skills** (from skill
+  registries / the web) for the chosen stack, into `skills/`.
 - **Slash commands** — optional, **tool-specific** ritual wrappers (`/wrap`,
   `/adr`, `/feature`, lane-switch), one set per agent in use, mapping to the
   `skills/`. **Do not pre-generate them.** Based on the tool the user is

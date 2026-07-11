@@ -106,8 +106,9 @@ any tool at any time later.
 
 Portable, tool-agnostic capabilities live in `skills/` (see `skills/README.md`).
 Built-in general skills: `wrap-session`, `write-adr`, `review-own-diff`,
-`clean-code`, `write-tests`. Project-specific skills are researched and added after the
-interview based on the stack/project type.
+`clean-code`, `write-tests`, `ponytail` (minimal code — always on), `caveman`
+(terse chat output — always on). Project-specific skills are researched and
+added after the interview based on the stack/project type.
 
 ## 9. MCP & external tools
 

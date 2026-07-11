@@ -31,6 +31,15 @@ These ship with the Genesis skeleton and apply to any project:
   files, naming, error handling, "why" comments, no god classes).
 - **`write-tests`** — drive a change with tests: turn acceptance criteria into a
   failing test first, pin behavior/contracts, keep the suite green.
+- **`ponytail`** — minimal-code discipline (vendored from
+  [upstream](https://github.com/DietrichGebert/ponytail), MIT): the "does this
+  need to exist" ladder — YAGNI → reuse → stdlib → native → installed dep →
+  one line → minimum code. Governs *how much* code exists; `clean-code` governs
+  its shape.
+- **`caveman`** — terse chat output (vendored from
+  [upstream](https://github.com/JuliusBrussee/caveman), MIT): drops filler,
+  pleasantries, and hedging from responses (~65% fewer output tokens);
+  technical content stays exact. Conversation only — never repo files.
 
 ## Project-specific (added after the interview)
 
