@@ -18,6 +18,19 @@ A git pre-commit (or pre-push) hook can run lint + format + tests before code
 leaves the machine — the same checks as CI, earlier. Keep hooks fast; push the
 slow checks to CI.
 
+## Cost hygiene (agent sessions)
+
+- **Placeholder guard:** after the Genesis interview, enable the commented
+  "No placeholders left" CI step so a half-filled `{{...}}` can't survive
+  silently.
+- **Model routing:** where the tool allows it, run trivial vibe-lane tasks
+  (renames, small fixes, doc edits) on a cheaper/faster model and keep the
+  strong model for architecture, debugging, and spec-lane work.
+- **Fan out broad read-only searches** to sub-agents (`AGENTS.md` §10) instead
+  of filling the main context with file dumps.
+- **Prompt-cache stability:** see `ai-session-protocol.md` — keep `AGENTS.md`
+  churn-free; session state belongs in the memory bank.
+
 ## Maturity gates
 
 - **Pre-alpha:** vibe lane is the default; CI may be a thin smoke check.

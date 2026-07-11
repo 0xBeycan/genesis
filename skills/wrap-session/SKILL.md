@@ -1,6 +1,6 @@
 ---
 name: wrap-session
-description: Close out a work session cleanly. Use at the end of ANY session in either lane (vibe or spec) to update the memory bank and run the Definition of Done so the next agent inherits an accurate, un-rotted state.
+description: Close out a work session cleanly. Use at the end of ANY session in either lane (vibe or spec) to update the memory bank, rotate an overgrown progress log, re-sync thin wrappers if rules changed, and run the Definition of Done so the next agent inherits an accurate, un-rotted state.
 ---
 
 # Wrap session
@@ -13,13 +13,10 @@ code.
 
 ## Steps
 
-1. Update `docs/memory/progress.md` — newest entry on top, dated, ending with a
-   clear **Next step**.
-2. Update `docs/memory/context.md` if the working state or open questions changed.
-3. Append to `docs/memory/decisions.md` if a decision was locked (link its ADR).
-4. Run the Definition of Done (`docs/process/definition-of-done.md`) for anything
-   you are calling complete.
-5. **Do not commit** unless the user asked.
+Run the **End of session** checklist in
+`docs/process/ai-session-protocol.md` — that file is the canonical copy of the
+ritual (memory-bank update, progress rotation, wrapper re-sync, DoD gate,
+no auto-commit). Don't work from memory; open it.
 
 ## Notes
 

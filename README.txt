@@ -13,12 +13,7 @@
      3. docs/memory/progress.md .. what's done / what's next
      4. docs/memory/decisions.md . the "why" log
 
-   GOLDEN RULES  (full list in AGENTS.md, section 3)
-     - One source of truth: AGENTS.md. Everything else points to it.
-     - Spec before code. ADR for every decision. Provider independence.
-     - Module boundaries. Definition of Done is a gate.
-     - Commit only when asked.
-
+   All rules live in AGENTS.md — nothing is duplicated here, on purpose.
    This repository was bootstrapped with Genesis. See GENESIS.md.
 
 ================================================================================

@@ -34,6 +34,8 @@ docs/
   process/                  # workflow, conventions, definition-of-done, session protocol
   features/                 # spec-before-code template
   memory/                   # progress · context · decisions (the AI writes these every session)
+skills/                     # portable, tool-agnostic SKILL.md capabilities
+.github/                    # templated quality-gate CI + PR template
 ```
 
 > The **code** scaffold (apps, packages, build tooling) is a later phase. Genesis's job is the **governance foundation** that every subsequent session reads first.
@@ -93,6 +95,10 @@ docs/
   process/                  # workflow, conventions, definition-of-done, session protocol
   features/                 # spec-before-code template
   memory/                   # progress · context · decisions (the AI writes these every session)
+skills/                     # built-in skills: wrap-session · write-adr · review-own-diff
+                            #   clean-code · write-tests · ponytail · caveman
+.github/                    # quality-gate CI (templated) + PR template with the DoD
+CHANGELOG.md                # skeleton versions — what a fork diverged from
 ```
 
 Project-specific files (design system, tool entry files like `.cursor/rules/`)

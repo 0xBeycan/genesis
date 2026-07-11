@@ -2,6 +2,31 @@
 
 > Newest entry on top. Each entry: what changed + the **Next step**.
 
+## 2026-07-11 — Governance hardening after full-skeleton audit
+
+- Audited all 39 files. Verdict: session-start read set is ~3k tokens (net
+  saving vs re-discovery); real risks were unbounded `progress.md` growth,
+  wrapper drift, and skills not being natively discovered by tools. Recorded in
+  [ADR-0005](../architecture/adr/0005-governance-hardening.md); skeleton is now
+  **v0.4.0** (see `CHANGELOG.md`).
+- Fixed drift: `CLAUDE.md` + `README.txt` were missing the test rule;
+  `README.md` trees omitted `skills/` and `.github/`; the session ritual was
+  copied verbatim in three places — `ai-session-protocol.md` is now canonical,
+  `wrap-session` and `AGENTS.md` §2 point to it. `README.txt` slimmed to a pure
+  pointer.
+- New guards: `progress.md` rotation rule (>10 entries → archive all but newest
+  5), wrapper re-sync step in the end-of-session checklist, prompt-cache
+  stability rule for `AGENTS.md`, placeholder `grep '{{'` check + commented CI
+  step, `GENESIS.md` deletion added to the §6 bootstrap ritual.
+- New files: `CHANGELOG.md` (skeleton versioning for forks), root `SECURITY.md`
+  pointer, ADR-0005. `.claude/settings.local.json` added to `.gitignore`.
+- Skill wiring: interview §F + `skills/README.md` §Wiring now generate native
+  per-tool discovery (Claude Code `.claude/skills/` symlinks, Cursor rule
+  pointer) so skill bodies load lazily; `automation.md` gained a cost-hygiene
+  section (model routing, sub-agent fan-out).
+- **Next step:** run the Genesis interview to fill `{{...}}`, or revisit issue
+  templates/CODEOWNERS if/when a second contributor joins.
+
 ## 2026-07-11 — Vendor ponytail + caveman skills (less code, fewer tokens)
 
 - Vendored two MIT upstreams as always-on built-in skills, distilled to their

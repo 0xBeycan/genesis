@@ -41,6 +41,24 @@ These ship with the Genesis skeleton and apply to any project:
   pleasantries, and hedging from responses (~65% fewer output tokens);
   technical content stays exact. Conversation only — never repo files.
 
+## Wiring (per tool in use)
+
+This folder is the **single source**; no skill content is ever duplicated into
+a tool's format. But each tool discovers skills natively so that only the
+frontmatter `description` is loaded until a skill is actually needed
+(progressive disclosure — cheaper than reading every body every session):
+
+- **Claude Code** — symlink each skill folder into `.claude/skills/`:
+  `ln -s ../../skills/<name> .claude/skills/<name>`.
+- **Cursor** — one short `.cursor/rules/` rule that lists the skills and says
+  when to open each `SKILL.md`.
+- **Other tools** — their native skill/rule location, pointing back here.
+
+Generate wiring only for tools actually in use (same on-demand policy as the
+entry files, `AGENTS.md` §7), and re-run it when a skill is added or removed.
+The **Claude Code wiring ships by default** in the skeleton (like `CLAUDE.md`):
+`.claude/skills/` already symlinks every built-in skill.
+
 ## Project-specific (added after the interview)
 
 Once the stack and project type are known, the agent should **research and add

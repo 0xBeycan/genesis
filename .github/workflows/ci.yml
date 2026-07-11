@@ -31,3 +31,11 @@ jobs:
 
       - name: Build
         run: echo "TODO {{BUILD_COMMAND}}"
+
+      # Post-interview guard: no template placeholders may survive the
+      # bootstrap. Enable (uncomment) after the Genesis interview fills the
+      # skeleton — GENESIS.md is deleted by then and _template files are exempt.
+      # - name: No placeholders left
+      #   run: |
+      #     ! grep -rn '{{' --include='*.md' --include='*.yml' . \
+      #       | grep -v '_template' | grep -v CHANGELOG.md

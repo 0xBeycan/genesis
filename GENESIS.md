@@ -1,5 +1,8 @@
 # GENESIS.md — Reusable Project Bootstrap Protocol
 
+> **Skeleton version: v0.4.0** — see `CHANGELOG.md` for what each version
+> added; a fork records the version it started from in `docs/memory/context.md`.
+
 > **Purpose.** Drop this single file into an empty (or early) repository and tell
 > the agent: _"Follow `GENESIS.md`."_ The agent will **interview you** about
 > the project you want, then generate a complete, sustainable, **agent-first
@@ -69,6 +72,8 @@ the user asks. Trim parts that don't apply to the project's shape (e.g. drop
 
 ```
 README.txt                         # NFO-style human + agent entry point → AGENTS.md
+SECURITY.md                        # GitHub-visible pointer → docs/process/security.md
+CHANGELOG.md                       # skeleton version history (fork may keep or delete)
 AGENTS.md                          # SINGLE SOURCE OF TRUTH (rules, stack, repo map)
 CLAUDE.md                          # thin wrapper → points to AGENTS.md (Claude Code; ships by default)
 .cursor/rules/000-start-here.mdc   # other tools' entry files (Cursor/Codex/Copilot/Gemini) — generated on demand only when that tool is in use
@@ -205,6 +210,15 @@ them pick. Possible layers (not a checklist to force):
   always-on baselines ([ADR-0004](docs/architecture/adr/0004-vendor-ponytail-caveman-skills.md)).
   Ask whether to **research and add project-type skills** (from skill
   registries / the web) for the chosen stack, into `skills/`.
+- **Skill wiring (per tool in use)** — `skills/` stays the single source, but
+  each agent tool discovers skills natively so descriptions load lazily
+  (progressive disclosure) instead of relying on the agent reading `AGENTS.md`
+  §8 voluntarily. For each tool in use, generate the wiring: Claude Code —
+  symlink each skill folder into `.claude/skills/` (`ln -s ../../skills/<name>
+  .claude/skills/<name>`); Cursor — a short `.cursor/rules/` rule listing the
+  skills and when to open them; other tools — their native skill/rule location,
+  pointing at `skills/`. Same on-demand policy as entry files: generate only
+  for tools actually in use.
 - **Slash commands** — optional, **tool-specific** ritual wrappers (`/wrap`,
   `/adr`, `/feature`, lane-switch), one set per agent in use, mapping to the
   `skills/`. **Do not pre-generate them.** Based on the tool the user is
@@ -367,7 +381,22 @@ After generating the foundation:
 1. Write the first **`docs/memory/progress.md`** entry (what was created + Next).
 2. Make sure **`docs/memory/decisions.md`** lists every locked decision → ADR.
 3. Mark **Phase 0** done in the roadmap; leave Phase 1 (scaffold) as the next step.
-4. Summarize to the user: what was created, the locked decisions, and the
+4. **Prune what doesn't apply** — delete, don't leave empty templates: `design/`
+   if there is no UI, the API-shape block in `conventions.md` for non-API
+   projects, unused `stack.md` rows, `AGENTS.md` §9 if no MCP/external tools
+   and §10 if single-agent, non-applicable DoD lines. An empty section costs
+   tokens every session and tells the next agent nothing; git remembers if the
+   shape changes later.
+5. **Placeholder guard:** run `grep -rn '{{' --include='*.md' .` (ignore
+   `_template` files and `CHANGELOG.md`) — resolve every leftover, then enable
+   the commented "No placeholders left" step in `.github/workflows/ci.yml`.
+6. **Record the skeleton version** (the `v*` at the top of this file /
+   `CHANGELOG.md`) in `docs/memory/context.md`, so the fork knows what it
+   diverged from.
+7. **Delete `GENESIS.md`** — the protocol's job is done and it lives upstream;
+   ~20KB of bootstrap instructions has no reader after Phase 0. If the user
+   prefers to keep it, note that choice in `docs/memory/decisions.md`.
+8. Summarize to the user: what was created, the locked decisions, and the
    recommended next step. **Do not commit** unless asked.
 
 > From here on, every future session just reads `AGENTS.md` + the memory bank and

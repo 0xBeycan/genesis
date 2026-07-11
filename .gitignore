@@ -19,6 +19,9 @@ out/
 target/
 *.log
 
+# --- Agent-local state (personal permissions/settings, never shared) ---
+.claude/settings.local.json
+
 # --- OS / editor ---
 .DS_Store
 Thumbs.db

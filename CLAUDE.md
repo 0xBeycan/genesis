@@ -11,5 +11,5 @@ This is a **thin wrapper**. The single source of truth is
   (see `docs/process/ai-session-protocol.md`).
 
 **Never:** wrong repo language · commit secrets/artifacts · hardcode one vendor ·
-build before the contract exists · break module boundaries · auto-commit without
-being asked.
+build before the contract exists · break module boundaries · ship behavior
+changes without tests · auto-commit without being asked.
