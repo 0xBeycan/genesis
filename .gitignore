@@ -20,7 +20,9 @@ target/
 *.log
 
 # --- Agent-local state (personal permissions/settings, never shared) ---
-.claude/settings.local.json
+# Covers any tool's local overrides (.claude/settings.local.json,
+# .cursor/mcp.local.json, …), not one vendor.
+**/*.local.json
 
 # --- OS / editor ---
 .DS_Store

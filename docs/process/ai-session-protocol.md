@@ -31,8 +31,10 @@ point here; if the ritual changes, change it here.
    The archive is history; only `progress.md` is read every session.
 3. Update `docs/memory/context.md` if the working state or open questions changed.
 4. Append to `docs/memory/decisions.md` if a decision was locked (link the ADR).
-5. **If a rule changed in `AGENTS.md` this session, re-sync the thin wrappers**
-   (`CLAUDE.md`, `README.txt`, any `.cursor/rules/*` — and the `README.md` trees
-   in the skeleton repo). Pointers that drift are worse than no pointers.
+5. **Keep the thin wrappers pure pointers** (`CLAUDE.md`, `README.txt`,
+   `.cursor/rules/*`): they carry no rule content, so a rule change in
+   `AGENTS.md` needs no re-sync — if one has grown a rule summary, strip it
+   back to a pointer. In the skeleton repo, also re-sync the `README.md` trees
+   when the file layout changed.
 6. Run the Definition of Done gate for anything you're calling complete.
 7. **Do not commit** unless the user asked.

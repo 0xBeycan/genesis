@@ -16,15 +16,14 @@ lane, but lands in the same change either way. See `conventions.md` §Testing an
 
 1. **Find the behavior.** What observable outcome or contract should hold? For a
    bug, reproduce it as a failing assertion first.
-2. **Pick the level** — unit (pure logic, no I/O) for most; integration for
-   module-to-module and real adapters; e2e/contract for user-visible flows.
-3. **Write the test against behavior, not implementation.** Assert outcomes and
-   contracts so a refactor doesn't break it. For a provider-independent adapter,
-   write it as a contract test reusable across implementations.
+2. **Pick the level** — unit / integration / e2e-contract, per the level guide
+   in `conventions.md` §Testing.
+3. **Write the test against behavior, not implementation** — assert outcomes
+   and contracts, not internals (adapter → contract test; rules in
+   `conventions.md` §Testing).
 4. **Watch it fail** for the right reason (red) before writing the code.
 5. **Implement** the smallest change that makes it pass (green).
-6. **Run the whole suite** — no skipped or flaky tests left behind. Cover the
-   behavior that matters; coverage is a floor, not a target.
+6. **Run the whole suite** — no skipped or flaky tests left behind.
 
 ## Notes
 

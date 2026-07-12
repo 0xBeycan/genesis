@@ -5,11 +5,10 @@ This is a **thin wrapper**. The single source of truth is
 
 - **Language policy:** the repo is written in {{REPO_LANGUAGE}} _(default
   English)_; chat can be any language.
-- **Start of session:** read `AGENTS.md`, then
-  `docs/memory/context.md`, `progress.md`, `decisions.md`.
+- **Start of session:** read `AGENTS.md`, then the memory bank
+  (`docs/process/ai-session-protocol.md` §Start of session).
 - **End of session:** update `docs/memory/progress.md`
   (see `docs/process/ai-session-protocol.md`).
 
-**Never:** wrong repo language · commit secrets/artifacts · hardcode one vendor ·
-build before the contract exists · break module boundaries · ship behavior
-changes without tests · auto-commit without being asked.
+All rules — golden rules and the NEVER list — live in `AGENTS.md` §3. Nothing
+is duplicated here, on purpose (pointers that carry content drift out of sync).

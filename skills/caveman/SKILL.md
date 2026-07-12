@@ -48,7 +48,7 @@ Yes: "Bug in auth middleware. Token expiry check use `<` not `<=`. Fix:"
 | Level | What changes |
 |-------|--------------|
 | **lite** | No filler/hedging. Keep articles + full sentences. Professional but tight. |
-| **full** | Drop articles, fragments OK, short synonyms. Classic caveman. No tool-call narration, no decorative tables/emoji, no long raw error-log dumps unless asked. Default. |
+| **full** | The Rules above, at full strength. Classic caveman. Default. |
 | **ultra** | Strip conjunctions when cause-then-effect stay unambiguous. One word when one word enough. State each fact once. Code symbols, function names, API names, error strings: never touch. |
 
 Example — "Why React component re-render?"

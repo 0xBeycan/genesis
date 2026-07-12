@@ -291,8 +291,8 @@ Create the tree from §1. Guidance per file:
   `8` Tool-specific files. State clearly: _"If a rule changes, update only this
   file; others reference it."_
 
-- **`CLAUDE.md`.** Thin. Points to `AGENTS.md`, restates the language policy and
-  the end-of-session ritual, lists the "Never" summary. No duplicated detail.
+- **`CLAUDE.md`.** Thin. Points to `AGENTS.md`, restates only the language
+  policy and the session-ritual pointers. No rule content — a pure pointer.
 
 - **`.cursor/rules/000-start-here.mdc`.** Ships by default (like `CLAUDE.md`).
   Front-matter `alwaysApply: true` + `description`. A pure pointer: read-order
@@ -300,8 +300,8 @@ Create the tree from §1. Guidance per file:
   pointer — no duplicated rule content. This is what auto-injects the protocol
   into Cursor.
 
-- **`README.txt`.** NFO/ASCII-art entry point for humans and agents. Restates the
-  read-order, the golden rules, and how auto-reading is guaranteed across tools.
+- **`README.txt`.** NFO/ASCII-art entry point for humans and agents. Restates
+  only the read-order and points to `AGENTS.md` for all rules.
 
 - **`docs/README.md`.** The docs map + "who writes what" (humans write
   product/architecture/design/process; AI writes memory/ every session, plus ADRs
