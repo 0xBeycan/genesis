@@ -49,15 +49,14 @@ frontmatter `description` is loaded until a skill is actually needed
 (progressive disclosure — cheaper than reading every body every session):
 
 - **Claude Code** — symlink each skill folder into `.claude/skills/`:
-  `ln -s ../../skills/<name> .claude/skills/<name>`.
-- **Cursor** — one short `.cursor/rules/` rule that lists the skills and says
-  when to open each `SKILL.md`.
-- **Other tools** — their native skill/rule location, pointing back here.
+  `ln -s ../../skills/<name> .claude/skills/<name>`. **Ships pre-wired** in the
+  skeleton for every built-in skill.
+- **Cursor** — `.cursor/rules/000-start-here.mdc` (alwaysApply) names the
+  always-on skills and points here. **Ships pre-wired** in the skeleton.
+- **Other tools** — their native skill/rule location, pointing back here;
+  generated on demand for tools actually in use (`AGENTS.md` §7).
 
-Generate wiring only for tools actually in use (same on-demand policy as the
-entry files, `AGENTS.md` §7), and re-run it when a skill is added or removed.
-The **Claude Code wiring ships by default** in the skeleton (like `CLAUDE.md`):
-`.claude/skills/` already symlinks every built-in skill.
+Re-run/update the wiring whenever a skill is added or removed.
 
 ## Project-specific (added after the interview)
 

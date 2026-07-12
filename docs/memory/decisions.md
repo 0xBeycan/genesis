@@ -2,6 +2,8 @@
 
 > One short line per locked decision, newest on top, linking its ADR.
 
+- Cursor entry file + skill pointer ship by default (like Claude Code); other
+  tools stay on-demand → `CHANGELOG.md` v0.5.0
 - Governance hardening: progress rotation, canonical session ritual, skeleton
   versioning (`CHANGELOG.md`), native per-tool skill wiring, bootstrap
   placeholder guard, post-bootstrap `GENESIS.md` removal →

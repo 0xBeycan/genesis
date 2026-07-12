@@ -2,6 +2,30 @@
 
 > Newest entry on top. Each entry: what changed + the **Next step**.
 
+## 2026-07-12 — Cursor ships by default (v0.5.0)
+
+- Added `.cursor/rules/000-start-here.mdc` to the skeleton: alwaysApply pure
+  pointer (read order, always-on `ponytail`/`caveman`, end-of-session checklist
+  pointer — no duplicated rule content). Claude Code and Cursor now both ship
+  wired by default; Codex/Copilot/Gemini stay on-demand.
+- Synced every place that stated the old on-demand-only policy: `AGENTS.md` §7,
+  `GENESIS.md` §1 tree + §4 + §F wiring, `skills/README.md` §Wiring,
+  `README.md` §Works with. Bumped skeleton to **v0.5.0**.
+- Swept the skeleton for other "resets on fork" gaps: everything else is
+  covered (README\* replaced by Mode B, memory templated/guarded, GENESIS.md
+  deleted, CHANGELOG keep-or-delete, ADRs/skills inherited) — the one hole was
+  **`LICENSE`** (MIT © upstream author, no placeholder → invisible to the
+  guard). Interview §A now asks license + owner; Mode B step 3 rewrites it.
+- Clarified the fork memory question: §6 step 1 now says forks **reset
+  `progress.md`** (skeleton maintenance entries are upstream history;
+  `CHANGELOG.md` carries it) while `decisions.md` keeps the inherited
+  skeleton-decision lines. Interview §F now suggests Serena-style
+  code-navigation MCP (post-scaffold) and stack-idiom pre-commit hooks
+  (husky / `pre-commit`) — recommendations only; both are per-project installs,
+  nothing to install in the skeleton itself.
+- **Next step:** run the Genesis interview to fill `{{...}}`, or revisit issue
+  templates/CODEOWNERS if/when a second contributor joins.
+
 ## 2026-07-11 — Governance hardening after full-skeleton audit
 
 - Audited all 39 files. Verdict: session-start read set is ~3k tokens (net

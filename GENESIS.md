@@ -1,6 +1,6 @@
 # GENESIS.md — Reusable Project Bootstrap Protocol
 
-> **Skeleton version: v0.4.0** — see `CHANGELOG.md` for what each version
+> **Skeleton version: v0.5.0** — see `CHANGELOG.md` for what each version
 > added; a fork records the version it started from in `docs/memory/context.md`.
 
 > **Purpose.** Drop this single file into an empty (or early) repository and tell
@@ -39,8 +39,9 @@ You are the bootstrapping agent. Before writing **any** project file, you MUST:
   the **project-type skills** researched for this stack (added under `skills/`),
   the MCP/tools table, the CI commands, and the tool-specific entry files
   (`.cursor/rules/…`, etc.) for the agents in use, (3) remove the Genesis banner
-  from `AGENTS.md` and replace the meta
-  `README.md`/`README.txt` placeholders with the real project identity. Mark
+  from `AGENTS.md`, replace the meta
+  `README.md`/`README.txt` placeholders with the real project identity, and
+  rewrite `LICENSE` with the project's chosen license + owner (§2A). Mark
   Phase 0 done and update the memory bank. You can tell you are in Mode B if
   `AGENTS.md` exists and contains `{{` placeholders.
 
@@ -76,7 +77,7 @@ SECURITY.md                        # GitHub-visible pointer → docs/process/sec
 CHANGELOG.md                       # skeleton version history (fork may keep or delete)
 AGENTS.md                          # SINGLE SOURCE OF TRUTH (rules, stack, repo map)
 CLAUDE.md                          # thin wrapper → points to AGENTS.md (Claude Code; ships by default)
-.cursor/rules/000-start-here.mdc   # other tools' entry files (Cursor/Codex/Copilot/Gemini) — generated on demand only when that tool is in use
+.cursor/rules/000-start-here.mdc   # Cursor entry (ships by default); Codex/Copilot/Gemini entries — generated on demand only when that tool is in use
 docs/
   README.md                        # docs index / map
   product/
@@ -131,6 +132,10 @@ override — never decide a stack or vendor for them silently.
 - **Product name** and **codename/folder**.
 - **One-sentence pitch** (what it is, in a single line).
 - **Current status** (what stage the project is at right now).
+- **License + copyright holder** (default: MIT, owned by the user/org). The
+  skeleton ships `LICENSE` as MIT © the Genesis author — the fork's `LICENSE`
+  must be rewritten with the project's own choice and owner (it carries no
+  `{{...}}`, so the placeholder guard won't catch it).
 
 ### B. Product (vision)
 
@@ -213,19 +218,21 @@ them pick. Possible layers (not a checklist to force):
 - **Skill wiring (per tool in use)** — `skills/` stays the single source, but
   each agent tool discovers skills natively so descriptions load lazily
   (progressive disclosure) instead of relying on the agent reading `AGENTS.md`
-  §8 voluntarily. For each tool in use, generate the wiring: Claude Code —
-  symlink each skill folder into `.claude/skills/` (`ln -s ../../skills/<name>
-  .claude/skills/<name>`); Cursor — a short `.cursor/rules/` rule listing the
-  skills and when to open them; other tools — their native skill/rule location,
-  pointing at `skills/`. Same on-demand policy as entry files: generate only
-  for tools actually in use.
+  §8 voluntarily. Claude Code (`.claude/skills/` symlinks) and Cursor
+  (`.cursor/rules/000-start-here.mdc` names the always-on skills and points at
+  `skills/`) ship pre-wired in the skeleton — keep both in sync when skills are
+  added/removed. Other tools — their native skill/rule location, pointing at
+  `skills/`, generated on demand for tools actually in use.
 - **Slash commands** — optional, **tool-specific** ritual wrappers (`/wrap`,
   `/adr`, `/feature`, lane-switch), one set per agent in use, mapping to the
   `skills/`. **Do not pre-generate them.** Based on the tool the user is
   currently working in, **ask** whether to create command files; generate only
   what they want, in that tool's format. This stays the user's standing decision
   — offer it again later, on demand.
-- **MCP / external tools** to wire (if any) → fill `AGENTS.md` §9.
+- **MCP / external tools** to wire (if any) → fill `AGENTS.md` §9. Worth
+  suggesting: a code-navigation MCP (e.g. **Serena** — LSP-based, symbol-level
+  reads instead of whole files; token-efficient once real code exists — wire it
+  post-scaffold and re-index as the code grows).
 - **Multi-agent orchestration** — will sub-agents/parallel roles be used? If so,
   fill `AGENTS.md` §10; otherwise leave it out.
 - **Commit convention** (e.g. Conventional Commits) + branch naming.
@@ -237,6 +244,9 @@ them pick. Possible layers (not a checklist to force):
   the command in `AGENTS.md` §6 and `.github/workflows/ci.yml`.
 - **Quality gates** for Definition of Done (lint, typecheck, tests, format — as
   applicable). Fill the CI commands in `.github/workflows/ci.yml` once known.
+  Offer local pre-commit hooks in the stack's idiom (e.g. husky + lint-staged +
+  commitlint for JS/TS, `pre-commit` for Python) — fast checks locally, slow
+  ones in CI (`docs/process/automation.md`).
 - **Non-obvious patterns** — capture any known footguns/gotchas into `AGENTS.md`
   §11 (highest-signal section); keep adding to it as they're discovered.
 - **Task tracking** — start with an in-repo markdown roadmap, move to issues later?
@@ -279,10 +289,11 @@ Create the tree from §1. Guidance per file:
 - **`CLAUDE.md`.** Thin. Points to `AGENTS.md`, restates the language policy and
   the end-of-session ritual, lists the "Never" summary. No duplicated detail.
 
-- **`.cursor/rules/000-start-here.mdc`.** Front-matter `alwaysApply: true` +
-  `description`. Restates: language policy, read-at-start list, update-at-end
-  list, hard-rules summary. This is what auto-injects the protocol into Cursor.
-  (Generate this only if Cursor is one of the tools in use.)
+- **`.cursor/rules/000-start-here.mdc`.** Ships by default (like `CLAUDE.md`).
+  Front-matter `alwaysApply: true` + `description`. A pure pointer: read-order
+  list, always-on skills (`ponytail`, `caveman`), end-of-session checklist
+  pointer — no duplicated rule content. This is what auto-injects the protocol
+  into Cursor.
 
 - **`README.txt`.** NFO/ASCII-art entry point for humans and agents. Restates the
   read-order, the golden rules, and how auto-reading is guaranteed across tools.
@@ -378,7 +389,12 @@ tomorrow a human, next week another team". Bake them into the generated docs:
 
 After generating the foundation:
 
-1. Write the first **`docs/memory/progress.md`** entry (what was created + Next).
+1. **Reset `docs/memory/progress.md`** to the project's own first entry
+   ("Phase 0 governance foundation from the interview" + Next). The skeleton's
+   maintenance entries are upstream history — they live in the Genesis repo and
+   `CHANGELOG.md`, not in the fork's memory. `docs/memory/decisions.md` is
+   different: **keep** the inherited skeleton-decision lines (their ADRs ship
+   in the fork) and add the interview decisions on top.
 2. Make sure **`docs/memory/decisions.md`** lists every locked decision → ADR.
 3. Mark **Phase 0** done in the roadmap; leave Phase 1 (scaffold) as the next step.
 4. **Prune what doesn't apply** — delete, don't leave empty templates: `design/`

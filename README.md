@@ -106,7 +106,7 @@ are added by the interview only when they apply.
 
 ### Works with
 
-Genesis ships with the **Claude Code** entry file (`CLAUDE.md`) by default. It's tool-agnostic, so the interview generates a matching entry file for any other agent you actually use — Cursor, Codex, Copilot, Gemini, and others — on demand.
+Genesis ships with the **Claude Code** (`CLAUDE.md` + `.claude/skills/` wiring) and **Cursor** (`.cursor/rules/000-start-here.mdc`) entry files by default. It's tool-agnostic, so the interview generates a matching entry file for any other agent you actually use — Codex, Copilot, Gemini, and others — on demand.
 
 ---
 

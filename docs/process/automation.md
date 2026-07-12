@@ -15,8 +15,9 @@ platform's CI if not GitHub.
 ## Local / pre-commit (optional)
 
 A git pre-commit (or pre-push) hook can run lint + format + tests before code
-leaves the machine — the same checks as CI, earlier. Keep hooks fast; push the
-slow checks to CI.
+leaves the machine — the same checks as CI, earlier. Use the stack's idiom
+(e.g. husky + lint-staged + commitlint for JS/TS, `pre-commit` for Python).
+Keep hooks fast; push the slow checks to CI.
 
 ## Cost hygiene (agent sessions)
 
@@ -27,7 +28,9 @@ slow checks to CI.
   (renames, small fixes, doc edits) on a cheaper/faster model and keep the
   strong model for architecture, debugging, and spec-lane work.
 - **Fan out broad read-only searches** to sub-agents (`AGENTS.md` §10) instead
-  of filling the main context with file dumps.
+  of filling the main context with file dumps. A code-navigation MCP (e.g.
+  Serena) reads at symbol level — prefer it over whole-file reads once the
+  codebase grows.
 - **Prompt-cache stability:** see `ai-session-protocol.md` — keep `AGENTS.md`
   churn-free; session state belongs in the memory bank.
 

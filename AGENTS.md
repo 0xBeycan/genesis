@@ -90,9 +90,10 @@ Conversation with the user may be in any language.
 
 ## 7. Tool-specific entry files & commands
 
-- `CLAUDE.md` → points here.
+- `CLAUDE.md` → points here (Claude Code; ships by default).
+- `.cursor/rules/000-start-here.mdc` → points here (Cursor; ships by default).
 
-<!-- GENESIS:FILL — add Cursor / Codex / Copilot / Gemini entries as used -->
+<!-- GENESIS:FILL — add Codex / Copilot / Gemini entries as used -->
 
 **Slash commands** are optional, **tool-specific** wrappers (Claude Code:
 `.claude/commands/`, Cursor: its own format, etc.) that user-trigger a ritual —
