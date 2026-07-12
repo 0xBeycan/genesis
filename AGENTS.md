@@ -124,8 +124,10 @@ demand, like the entry files in §7. See `skills/README.md` §Wiring.
 | ----------------- | ------- | ----- |
 | `{{...}}`         |         |       |
 
-> An MCP server configured for one agent works across agents — keep this table
-> as the one place that lists them.
+> The same MCP server serves every agent, but **each tool reads its own config
+> file** (Claude Code: root `.mcp.json` · Cursor: `.cursor/mcp.json` · others:
+> their own) — wire it per tool in use, and keep this table as the one place
+> that lists them.
 
 ## 10. Agent orchestration
 
