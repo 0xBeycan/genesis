@@ -234,7 +234,12 @@ them pick. Possible layers (not a checklist to force):
   reads instead of whole files; token-efficient once real code exists — wire it
   post-scaffold and re-index as the code grows).
 - **Multi-agent orchestration** — will sub-agents/parallel roles be used? If so,
-  fill `AGENTS.md` §10; otherwise leave it out.
+  fill `AGENTS.md` §10 and generate sub-agent definition files for the tools in
+  use (Claude Code: `.claude/agents/`, Cursor: `.cursor/agents/` — near-identical
+  markdown + YAML-frontmatter format), with roles drawn from the interview
+  (stack, boundaries). **Do not pre-generate them** — same on-demand rule as
+  slash commands; generic roles are already covered by each tool's built-in
+  agents. Otherwise leave §10 out.
 - **Commit convention** (e.g. Conventional Commits) + branch naming.
 - **Commit-on-demand** rule (recommended: never commit unless asked).
 - **Testing (always ask — not optional).** Which **test runner** fits the chosen

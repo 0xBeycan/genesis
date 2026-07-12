@@ -131,7 +131,9 @@ demand, like the entry files in §7. See `skills/README.md` §Wiring.
 
 ## 10. Agent orchestration
 
-<!-- GENESIS:FILL — only if multi-agent work is used -->
+<!-- GENESIS:FILL — only if multi-agent work is used. Sub-agent definition files
+are tool-specific and generated on demand like slash commands (§7), never
+pre-generated (Claude Code: `.claude/agents/` · Cursor: `.cursor/agents/`). -->
 
 - **When to fan out:** broad read-only search / independent parallel subtasks.
 - **Roles:** {{e.g. planner vs builder vs reviewer — define if used}}.
