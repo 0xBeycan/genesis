@@ -33,12 +33,14 @@ jobs:
         run: echo "TODO {{BUILD_COMMAND}}"
 
       # Post-interview guard: no template placeholder may survive the
-      # bootstrap, in ANY tracked file (README.txt, .mdc rules, configs — not
-      # just .md/.yml). Enable (uncomment) after the Genesis interview fills
-      # the skeleton — GENESIS.md is deleted by then; _template files and
-      # historical records (memory bank, ADRs, CHANGELOG), which may quote the
-      # placeholder syntax, are exempt.
-      # The pattern is written [{][{] so this file doesn't match itself.
+      # bootstrap in any doc/config surface (README.txt and .mdc rules too —
+      # not just .md/.yml). Enable (uncomment) after the Genesis interview
+      # fills the skeleton — GENESIS.md is deleted by then; _template files
+      # and historical records (memory bank, ADRs, CHANGELOG), which may quote
+      # the placeholder syntax, are exempt. Scoped to doc extensions because
+      # source code legitimately uses {{ }} (Vue/Jinja/Handlebars), and the
+      # (^|[^$]) prefix skips GitHub Actions ${{ ... }} expressions — it also
+      # keeps this file from matching itself.
       # - name: No placeholders left
       #   run: |
-      #     ! git grep -nE '[{][{]' -- ':!*_template*' ':!CHANGELOG.md' ':!docs/memory' ':!docs/architecture/adr'
+      #     ! git grep -nE '(^|[^$])[{][{]' -- '*.md' '*.txt' '*.mdc' '*.yml' '*.yaml' ':!*_template*' ':!CHANGELOG.md' ':!docs/memory' ':!docs/architecture/adr'
