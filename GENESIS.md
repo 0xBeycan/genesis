@@ -39,8 +39,9 @@ You are the bootstrapping agent. Before writing **any** project file, you MUST:
   the **project-type skills** researched for this stack (added under `skills/`),
   the MCP/tools table, the CI commands, and the tool-specific entry files
   (`.cursor/rules/…`, etc.) for the agents in use, (3) remove the Genesis banner
-  from `AGENTS.md`, replace the meta
-  `README.md`/`README.txt` placeholders with the real project identity, and
+  from `AGENTS.md`, turn the entry point into the project's own `README.md`
+  (delete Genesis's meta `README.md`, fill the placeholders in `README.txt`,
+  then rename it `README.txt` → `README.md` — §2A), and
   rewrite `LICENSE` with the project's chosen license + owner (§2A). Mark
   Phase 0 done and update the memory bank. You can tell you are in Mode B if
   `AGENTS.md` exists and contains `{{` placeholders.
@@ -72,7 +73,7 @@ the user asks. Trim parts that don't apply to the project's shape (e.g. drop
 `design/` if there is no UI).
 
 ```
-README.txt                         # NFO-style human + agent entry point → AGENTS.md
+README.txt                         # project entry point (Markdown) → renamed README.md on bootstrap
 SECURITY.md                        # GitHub-visible pointer → docs/process/security.md
 CHANGELOG.md                       # skeleton version history (fork may keep or delete)
 AGENTS.md                          # SINGLE SOURCE OF TRUTH (rules, stack, repo map)
@@ -136,6 +137,13 @@ override — never decide a stack or vendor for them silently.
   skeleton ships `LICENSE` as a generic MIT © Genesis — the fork's `LICENSE`
   must be rewritten with the project's own choice and owner (it carries no
   `{{...}}`, so the placeholder guard won't catch it — rewrite it by hand).
+- **Entry-point README.** The skeleton ships two READMEs: `README.md` describes
+  Genesis itself (kept `.md` so it renders on the Genesis repo), and `README.txt`
+  is the project's own entry point as Markdown, held under `.txt` only to avoid
+  colliding with that meta `README.md`. On bootstrap, **delete the meta
+  `README.md`**, fill `README.txt`'s `{{...}}` placeholders and the
+  `project-structure` FILL block, then **rename `README.txt` → `README.md`** so
+  the fork lands with a single, well-rendered `README.md`.
 
 ### B. Product (vision)
 
@@ -300,8 +308,11 @@ Create the tree from §1. Guidance per file:
   pointer — no duplicated rule content. This is what auto-injects the protocol
   into Cursor.
 
-- **`README.txt`.** NFO/ASCII-art entry point for humans and agents. Restates
-  only the read-order and points to `AGENTS.md` for all rules.
+- **`README.txt`.** The project's entry point for humans and agents, written in
+  Markdown (kept `.txt` only so it doesn't collide with Genesis's own meta
+  `README.md`). Restates the read-order, carries a short project-structure map,
+  and points to `AGENTS.md` for all rules. On bootstrap it is renamed to
+  `README.md` (§2A).
 
 - **`docs/README.md`.** The docs map + "who writes what" (humans write
   product/architecture/design/process; AI writes memory/ every session, plus ADRs
@@ -416,10 +427,11 @@ After generating the foundation:
    `CHANGELOG.md`) in `docs/memory/context.md`, so the fork knows what it
    diverged from.
 7. **Delete `GENESIS.md`** — the protocol's job is done and it lives upstream;
-   ~20KB of bootstrap instructions has no reader after Phase 0. Also remove
-   the pointers to it (the "See GENESIS.md" line in `README.txt`, any mention
-   left in `README.md`) so nothing references a deleted file. If the user
-   prefers to keep `GENESIS.md`, note that choice in `docs/memory/decisions.md`.
+   ~20KB of bootstrap instructions has no reader after Phase 0. Also remove any
+   pointer left to it (e.g. a "See GENESIS.md" mention in the project `README.md`)
+   so nothing references a deleted file; the "bootstrapped with Genesis"
+   attribution link may stay. If the user prefers to keep `GENESIS.md`, note that
+   choice in `docs/memory/decisions.md`.
 8. Summarize to the user: what was created, the locked decisions, and the
    recommended next step. **Do not commit** unless asked.
 

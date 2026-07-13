@@ -24,7 +24,7 @@ Instead of re-describing your stack, conventions, and decisions every session, y
 After the interview, the agent scaffolds a governance skeleton like this:
 
 ```
-README.txt                  # NFO-style entry point → AGENTS.md
+README.txt                  # project entry point (Markdown) → renamed README.md on fork
 AGENTS.md                   # SINGLE SOURCE OF TRUTH (rules, stack, repo map)
 CLAUDE.md  .cursor/rules/   # thin per-tool wrappers → point to AGENTS.md
 docs/
@@ -88,7 +88,7 @@ AGENTS.md                   # SINGLE SOURCE OF TRUTH (rules, stack, repo map)
 CLAUDE.md                   # thin wrapper → points to AGENTS.md (Claude Code)
 .cursor/rules/              # thin wrapper → points to AGENTS.md (Cursor)
 .claude/skills/             # skill wiring for Claude Code (symlinks into skills/)
-README.txt                  # NFO-style entry point for humans & agents
+README.txt                  # project entry point (Markdown); renamed README.md on fork
 SECURITY.md                 # reporting channel + pointer to the full policy
 .gitignore  .editorconfig   # baseline tooling config
 docs/
