@@ -34,9 +34,9 @@ in Phase 1; the principles below hold from day one. The detailed companion to th
 
 ## Reporting a vulnerability
 
-- {{How to report — private channel / email / security advisory. Fill once the
-  project is public.}} Do **not** open a public issue for an unpatched
-  vulnerability.
+- The reporting channel lives in the root `SECURITY.md` (the file GitHub's
+  Security tab surfaces) — that is the single fill-in; don't duplicate it here.
+  Do **not** open a public issue for an unpatched vulnerability.
 
 ## Review
 

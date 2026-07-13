@@ -1,6 +1,6 @@
 # Quality-gate CI — turns the Definition of Done into an enforced gate.
-# Templated: fill the {{...}} steps once the stack/commands exist (Phase 1).
-# Until then this workflow is a no-op scaffold and is safe to keep.
+# Templated: fill the placeholder TODO steps once the stack/commands exist
+# (Phase 1). Until then this workflow is a no-op scaffold and is safe to keep.
 
 name: ci
 
@@ -32,10 +32,13 @@ jobs:
       - name: Build
         run: echo "TODO {{BUILD_COMMAND}}"
 
-      # Post-interview guard: no template placeholders may survive the
-      # bootstrap. Enable (uncomment) after the Genesis interview fills the
-      # skeleton — GENESIS.md is deleted by then and _template files are exempt.
+      # Post-interview guard: no template placeholder may survive the
+      # bootstrap, in ANY tracked file (README.txt, .mdc rules, configs — not
+      # just .md/.yml). Enable (uncomment) after the Genesis interview fills
+      # the skeleton — GENESIS.md is deleted by then; _template files and
+      # historical records (memory bank, ADRs, CHANGELOG), which may quote the
+      # placeholder syntax, are exempt.
+      # The pattern is written [{][{] so this file doesn't match itself.
       # - name: No placeholders left
       #   run: |
-      #     ! grep -rn '{{' --include='*.md' --include='*.yml' . \
-      #       | grep -v '_template' | grep -v CHANGELOG.md
+      #     ! git grep -nE '[{][{]' -- ':!*_template*' ':!CHANGELOG.md' ':!docs/memory' ':!docs/architecture/adr'

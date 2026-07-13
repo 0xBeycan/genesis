@@ -112,8 +112,9 @@ Built-in general skills: `wrap-session`, `write-adr`, `review-own-diff`,
 added after the interview based on the stack/project type.
 
 Skills are also **wired natively per tool in use** so descriptions load lazily
-instead of depending on this section being read — generated on demand, like the
-entry files in §7. Per-tool mechanism: `skills/README.md` §Wiring.
+instead of depending on this section being read — pre-wired in the skeleton for
+the default tools (§7), added on demand for any other tool. Per-tool mechanism:
+`skills/README.md` §Wiring.
 
 ## 9. MCP & external tools
 

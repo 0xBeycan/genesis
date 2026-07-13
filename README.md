@@ -26,7 +26,7 @@ After the interview, the agent scaffolds a governance skeleton like this:
 ```
 README.txt                  # NFO-style entry point → AGENTS.md
 AGENTS.md                   # SINGLE SOURCE OF TRUTH (rules, stack, repo map)
-CLAUDE.md                   # thin wrapper → points to AGENTS.md
+CLAUDE.md  .cursor/rules/   # thin per-tool wrappers → point to AGENTS.md
 docs/
   product/                  # vision + living, phase-based roadmap
   architecture/             # overview, locked stack, ADRs (one per decision)
@@ -85,8 +85,11 @@ structure already in place:
 ```
 GENESIS.md                  # the bootstrap protocol (interviews you, fills the skeleton)
 AGENTS.md                   # SINGLE SOURCE OF TRUTH (rules, stack, repo map)
-CLAUDE.md                   # thin wrapper → points to AGENTS.md
+CLAUDE.md                   # thin wrapper → points to AGENTS.md (Claude Code)
+.cursor/rules/              # thin wrapper → points to AGENTS.md (Cursor)
+.claude/skills/             # skill wiring for Claude Code (symlinks into skills/)
 README.txt                  # NFO-style entry point for humans & agents
+SECURITY.md                 # reporting channel + pointer to the full policy
 .gitignore  .editorconfig   # baseline tooling config
 docs/
   README.md                 # docs map (who writes what)
@@ -101,8 +104,8 @@ skills/                     # built-in skills: wrap-session · write-adr · revi
 CHANGELOG.md                # skeleton versions — what a fork diverged from
 ```
 
-Project-specific files (design system, tool entry files like `.cursor/rules/`)
-are added by the interview only when they apply.
+Project-specific files (design system, entry files for further tools like
+Codex / Copilot / Gemini) are added by the interview only when they apply.
 
 ### Works with
 
@@ -112,4 +115,4 @@ Genesis ships with the **Claude Code** (`CLAUDE.md` + `.claude/skills/` wiring) 
 
 ## License
 
-[MIT](./LICENSE) © Halil Beycan. Fork it, adapt it, build on it.
+[MIT](./LICENSE) © Genesis. Fork it, adapt it, build on it.

@@ -133,9 +133,9 @@ override — never decide a stack or vendor for them silently.
 - **One-sentence pitch** (what it is, in a single line).
 - **Current status** (what stage the project is at right now).
 - **License + copyright holder** (default: MIT, owned by the user/org). The
-  skeleton ships `LICENSE` as MIT © the Genesis author — the fork's `LICENSE`
+  skeleton ships `LICENSE` as a generic MIT © Genesis — the fork's `LICENSE`
   must be rewritten with the project's own choice and owner (it carries no
-  `{{...}}`, so the placeholder guard won't catch it).
+  `{{...}}`, so the placeholder guard won't catch it — rewrite it by hand).
 
 ### B. Product (vision)
 
@@ -408,15 +408,18 @@ After generating the foundation:
    and §10 if single-agent, non-applicable DoD lines. An empty section costs
    tokens every session and tells the next agent nothing; git remembers if the
    shape changes later.
-5. **Placeholder guard:** run `grep -rn '{{' --include='*.md' .` (ignore
-   `_template` files and `CHANGELOG.md`) — resolve every leftover, then enable
-   the commented "No placeholders left" step in `.github/workflows/ci.yml`.
+5. **Placeholder guard:** run the command from the commented "No placeholders
+   left" step in `.github/workflows/ci.yml` — that step is the canonical copy
+   of the check. Resolve every leftover (and rewrite `LICENSE`, which the grep
+   can't see — §2A), then enable (uncomment) the step.
 6. **Record the skeleton version** (the `v*` at the top of this file /
    `CHANGELOG.md`) in `docs/memory/context.md`, so the fork knows what it
    diverged from.
 7. **Delete `GENESIS.md`** — the protocol's job is done and it lives upstream;
-   ~20KB of bootstrap instructions has no reader after Phase 0. If the user
-   prefers to keep it, note that choice in `docs/memory/decisions.md`.
+   ~20KB of bootstrap instructions has no reader after Phase 0. Also remove
+   the pointers to it (the "See GENESIS.md" line in `README.txt`, any mention
+   left in `README.md`) so nothing references a deleted file. If the user
+   prefers to keep `GENESIS.md`, note that choice in `docs/memory/decisions.md`.
 8. Summarize to the user: what was created, the locked decisions, and the
    recommended next step. **Do not commit** unless asked.
 
