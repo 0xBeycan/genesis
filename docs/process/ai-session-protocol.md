@@ -30,11 +30,14 @@ point here; if the ritual changes, change it here.
    newest 5 to `docs/memory/progress-archive.md` (same format, append at top).
    The archive is history; only `progress.md` is read every session.
 3. Update `docs/memory/context.md` if the working state or open questions changed.
-4. Append to `docs/memory/decisions.md` if a decision was locked (link the ADR).
-5. **Keep the thin wrappers pure pointers** (`CLAUDE.md`, `README.txt`,
+4. Update `docs/product/roadmap.md` if any item's status changed
+   (`[ ]` → `[~]` → `[x]`) — the roadmap rots silently if only `progress.md`
+   is kept current.
+5. Append to `docs/memory/decisions.md` if a decision was locked (link the ADR).
+6. **Keep the thin wrappers pure pointers** (`CLAUDE.md`, `README.txt`,
    `.cursor/rules/*`): they carry no rule content, so a rule change in
    `AGENTS.md` needs no re-sync — if one has grown a rule summary, strip it
    back to a pointer. In the skeleton repo, also re-sync the `README.md` trees
    when the file layout changed.
-6. Run the Definition of Done gate for anything you're calling complete.
-7. **Do not commit** unless the user asked.
+7. Run the Definition of Done gate for anything you're calling complete.
+8. **Do not commit** unless the user asked.

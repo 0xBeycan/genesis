@@ -30,8 +30,8 @@ Conversation with the user may be in any language.
 4. `docs/memory/decisions.md` — the "why" log
 
 **At the end of every session**, update `docs/memory/progress.md` (and
-`context.md` / `decisions.md` when relevant). Full ritual in
-`docs/process/ai-session-protocol.md`.
+`context.md` / `decisions.md` / `docs/product/roadmap.md` when relevant).
+Full ritual in `docs/process/ai-session-protocol.md`.
 
 ## 3. Golden rules
 
