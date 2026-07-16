@@ -2,7 +2,10 @@
 
 ## Status
 
-Accepted
+Accepted — amended by [ADR-0003](0003-test-first-discipline.md) and
+[ADR-0007](0007-product-workshop-split.md): tests are a shared invariant
+(test-first in **both** lanes), and the invariants' single home is
+`AGENTS.md` §3 — the enumeration below is historical.
 
 ## Context
 

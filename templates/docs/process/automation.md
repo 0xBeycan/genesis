@@ -1,0 +1,42 @@
+# Automation — make the gate enforce itself
+
+The Definition of Done is only real if something checks it. Wire these as the
+stack solidifies (Phase 1+), so the gate doesn't depend on anyone remembering.
+
+## CI
+
+`.github/workflows/ci.yml` defines the quality gate (install · lint · typecheck ·
+test · build) and runs on `push` / `pull_request` from day one. The command
+steps ship as echo-TODOs — harmless until Phase 1 wires the real stack
+commands. The **"No placeholders left"** step is live from the start: it fails
+while any interview placeholder or unresolved fill-marker survives, so a
+half-filled bootstrap can't pass silently. Replace with your platform's CI if
+not GitHub.
+
+## Local / pre-commit (optional)
+
+A git pre-commit (or pre-push) hook can run lint + format + tests before code
+leaves the machine — the same checks as CI, earlier. Use the stack's current
+idiom and verify it with a quick search when wiring it — hook managers change
+faster than this file. Keep hooks fast; push the slow checks to CI.
+
+## Cost hygiene (agent sessions)
+
+- **Model routing:** where the tool allows it, run trivial vibe-lane tasks
+  (renames, small fixes, doc edits) on a cheaper/faster model and keep the
+  strong model for architecture, debugging, and spec-lane work.
+- **Fan out broad read-only searches** to sub-agents (`AGENTS.md` §10) instead
+  of filling the main context with file dumps. Once the codebase outgrows
+  grep, a symbol-level code-navigation MCP becomes worth wiring — research
+  the current options at that moment, not from memory, and never on day one.
+- **Prompt-cache stability:** see `ai-session-protocol.md` — keep `AGENTS.md`
+  churn-free; session state belongs in the memory bank.
+
+## Maturity gates
+
+- **Pre-alpha:** vibe lane is the default; CI may be a thin smoke check.
+- **Alpha/beta and after:** spec lane + **PR review** become the default; CI is a
+  required, blocking gate on the default branch.
+
+> Automation enforces the invariants from `workflow.md`; it never replaces the
+> end-of-session memory update (`skills/wrap-session`).

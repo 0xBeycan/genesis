@@ -1,46 +1,35 @@
-# Quality-gate CI — turns the Definition of Done into an enforced gate.
-# Templated: fill the placeholder TODO steps once the stack/commands exist
-# (Phase 1). Until then this workflow is a no-op scaffold and is safe to keep.
+# Genesis workshop CI — guards the product in templates/.
+#
+# Two rules, both live:
+#   1. No placeholder syntax outside templates/ — root files are real, always.
+#      Exemptions: templates/ is the placeholder carrier by design;
+#      docs/architecture/adr and CHANGELOG.md are history that quotes the
+#      syntax; GENESIS.md is the protocol that instructs about it.
+#   2. A change inside templates/ is a product change: it must ship with a
+#      CHANGELOG.md entry (the version's single source).
 
 name: ci
 
-on:
-  workflow_dispatch:
+on: [push, pull_request]
 
 jobs:
-  quality-gate:
+  guard:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      # --- Toolchain setup (uncomment/replace for your stack) ---
-      # - uses: actions/setup-node@v4
-      #   with: { node-version: '{{VERSION}}' }
+      - name: No placeholders outside templates/
+        run: |
+          ! git grep -nE '(^|[^$])[{][{]|GENESIS[:]FILL' -- . ':!templates' ':!docs/architecture/adr' ':!CHANGELOG.md' ':!GENESIS.md'
 
-      - name: Install
-        run: echo "TODO {{INSTALL_COMMAND}}" # e.g. npm ci
-
-      - name: Lint
-        run: echo "TODO {{LINT_COMMAND}}"
-
-      - name: Typecheck
-        run: echo "TODO {{TYPECHECK_COMMAND}}" # drop if untyped
-
-      - name: Test
-        run: echo "TODO {{TEST_COMMAND}}"
-
-      - name: Build
-        run: echo "TODO {{BUILD_COMMAND}}"
-
-      # Post-interview guard: no template placeholder may survive the
-      # bootstrap in any doc/config surface (README.txt and .mdc rules too —
-      # not just .md/.yml). Enable (uncomment) after the Genesis interview
-      # fills the skeleton — GENESIS.md is deleted by then; _template files
-      # and historical records (memory bank, ADRs, CHANGELOG), which may quote
-      # the placeholder syntax, are exempt. Scoped to doc extensions because
-      # source code legitimately uses {{ }} (Vue/Jinja/Handlebars), and the
-      # (^|[^$]) prefix skips GitHub Actions ${{ ... }} expressions — it also
-      # keeps this file from matching itself.
-      # - name: No placeholders left
-      #   run: |
-      #     ! git grep -nE '(^|[^$])[{][{]' -- '*.md' '*.txt' '*.mdc' '*.yml' '*.yaml' ':!*_template*' ':!CHANGELOG.md' ':!docs/memory' ':!docs/architecture/adr'
+      - name: templates/ change ships with a CHANGELOG entry
+        run: |
+          base='${{ github.event.pull_request.base.sha || github.event.before }}'
+          case "$base" in ''|0000000000000000000000000000000000000000) exit 0 ;; esac
+          changed=$(git diff --name-only "$base"..HEAD)
+          if echo "$changed" | grep -q '^templates/' && ! echo "$changed" | grep -qx 'CHANGELOG\.md'; then
+            echo 'templates/ changed but CHANGELOG.md did not — bump the product version.'
+            exit 1
+          fi

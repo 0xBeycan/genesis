@@ -1,0 +1,37 @@
+# --- Secrets & environment ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# --- Dependencies ---
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+
+# --- Build output / artifacts ---
+dist/
+build/
+out/
+target/
+*.log
+
+# --- Agent-local state (personal permissions/settings, never shared) ---
+# Covers any tool's local overrides (.claude/settings.local.json,
+# .cursor/mcp.local.json, …), not one vendor.
+**/*.local.json
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# --- Coverage / caches ---
+coverage/
+.cache/
+.tmp/

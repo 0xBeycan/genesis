@@ -1,22 +1,14 @@
 ---
-description: Entry point — the single source of truth is AGENTS.md; read it and the memory bank before any work
+description: Genesis workshop entry — read AGENTS.md and the memory bank; the product lives in templates/
 alwaysApply: true
 ---
 
-# START HERE
+# START HERE (Genesis development)
 
-**All rules live in `AGENTS.md`** — this file is a pointer, on purpose
-(pointers that carry content drift out of sync).
+All rules live in root `AGENTS.md`; read it, then `docs/memory/` (context →
+progress → decisions). The product ships from `templates/` — any change there
+needs a `CHANGELOG.md` entry.
 
-Read at the start of a session:
-
-1. `AGENTS.md` — single source of truth (rules, stack, repo map, golden rules + NEVER list).
-2. The memory bank, per `docs/process/ai-session-protocol.md` §Start of session.
-
-Skills live in `skills/` (see `AGENTS.md` §8). **Always on — follow in every
-response:** `skills/ponytail/SKILL.md` (write the least code that works).
-Open the other skills when their description matches the task.
-
-End of session: run the checklist in `docs/process/ai-session-protocol.md`
-(memory update, progress rotation, wrapper re-sync, Definition of Done).
-Never commit unless asked.
+**Always on:** follow `templates/skills/ponytail/SKILL.md` (write the least
+code that works). End of session: update `docs/memory/progress.md`. Never
+commit unless asked.

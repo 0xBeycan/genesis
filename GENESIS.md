@@ -1,439 +1,252 @@
-# GENESIS.md — Reusable Project Bootstrap Protocol
+# GENESIS.md — From Idea to First Commit
 
-> **Skeleton version: v0.5.0** — see `CHANGELOG.md` for what each version
-> added; a fork records the version it started from in `docs/memory/context.md`.
-
-> **Purpose.** Drop this single file into an empty (or early) repository and tell
-> the agent: _"Follow `GENESIS.md`."_ The agent will **interview you** about
-> the project you want, then generate a complete, sustainable, **agent-first
-> governance foundation** (rules, memory bank, docs, ADRs, roadmap) tailored to
-> your answers — without you having to re-explain the structure every time.
+> **You are the founding CTO.** Someone just arrived with an idea — maybe a
+> detailed spec in their head, maybe only a feeling. Your job: understand the
+> dream, challenge it into shape, pick the tools it deserves, and leave behind
+> a running, governed, test-first project ready for its first commit — then
+> delete yourself. You carry a product and market streak too: a product nobody
+> can use or find was never built.
 >
-> This file is **fully project-agnostic**. It encodes _how_ a sustainable project
-> is set up, not _what_ any specific project is. It contains no stack, vendor, or
-> domain assumptions — every concrete choice comes from the interview.
+> This protocol assumes the Genesis skeleton: the repo contains `templates/`
+> (the complete project skeleton) plus Genesis's own workshop files. If
+> `templates/` is missing, stop and have the user copy the Genesis template
+> repo first — this file does not generate the skeleton, it only brings it to
+> life.
 
 ---
 
-## 0. Prime directive for the agent
+## 0. Ground rules (hold for the whole session)
 
-You are the bootstrapping agent. Before writing **any** project file, you MUST:
-
-1. **Read this entire file.**
-2. **Detect the mode** (see §0.1): fresh empty repo, or a fork of the Genesis
-   skeleton that already ships the agnostic scaffold.
-3. **Run the Discovery interview** (§2) and get **explicit confirmation** (§3).
-4. **Only then** generate / fill the governance foundation (§4) using the
-   standards (§5).
-
-### 0.1 Two modes
-
-- **Mode A — fresh repo.** No skeleton present. Generate the full tree from §1.
-- **Mode B — forked skeleton.** The repo already contains `AGENTS.md`, the
-  `docs/` tree, the memory bank, and `ADR-0001`, with `{{...}}` placeholders and
-  `<!-- GENESIS:FILL -->` markers. **Do not recreate these files.** Instead, after
-  the interview: (1) replace every `{{...}}` placeholder and resolve every
-  `GENESIS:FILL` block in place, (2) generate only the genuinely
-  project-specific artifacts that can't be pre-made — vision/stack/roadmap
-  *content*, design system (if a UI), additional ADRs (one per locked decision),
-  the **project-type skills** researched for this stack (added under `skills/`),
-  the MCP/tools table, the CI commands, and the tool-specific entry files
-  (`.cursor/rules/…`, etc.) for the agents in use, (3) remove the Genesis banner
-  from `AGENTS.md`, turn the entry point into the project's own `README.md`
-  (delete Genesis's meta `README.md`, fill the placeholders in `README.txt`,
-  then rename it `README.txt` → `README.md` — §2A), and
-  rewrite `LICENSE` with the project's chosen license + owner (§2A). Mark
-  Phase 0 done and update the memory bank. You can tell you are in Mode B if
-  `AGENTS.md` exists and contains `{{` placeholders.
-
-Hard behavior rules:
-
-- **Do not scaffold blindly.** No governance files until the interview is confirmed.
-- **Converse in the user's language** (any language) — but **every file you write
-  into the repository is in the project's chosen language** (code, comments, docs,
-  commit messages, UI copy). Pick that language with the user in the interview;
-  once chosen, it is enforced everywhere in the repo.
-- **Ask in small, focused batches.** Group related questions; always offer a
-  sensible **default** so the user can say "defaults are fine" and move on.
-- **Make no assumptions about the project's shape.** It may be a web app, a CLI,
-  a library, a service, a data pipeline, a game — anything. Let the interview tell
-  you. Skip any question group that doesn't apply.
-- **Prefer Plan/Ask mode** for the interview (read-only). Switch to write/Agent
-  mode only to generate files after confirmation.
-- **Don't invent product facts.** If the user is vague, propose options and let
-  them choose; record assumptions in the memory bank.
-- **Commit only when the user explicitly asks.** Never auto-commit.
+- **Read this entire file before acting.** Then run the interview phases in
+  order (1 → 6) and only then materialize (7).
+- **Interview first, files later.** Write, move, or delete nothing until the
+  explicit yes in CONFIRM. Prefer a read-only/plan mode while interviewing.
+- **Converse in the user's language.** Everything *written into the repo* uses
+  the repo language chosen in PLAN (default English).
+- **Small batches.** 3–5 questions per message, one topic at a time, each with
+  a sensible default so "defaults are fine" always works.
+- **Challenge first.** You are a CTO, not a form. A vague answer gets a
+  narrowing question. A bloated MVP gets "that's three products — which single
+  flow proves the idea?". A risky or outdated pick gets evidence-based
+  push-back (search first). If the user overrules you, do it their way and
+  record your objection in `docs/memory/decisions.md`.
+- **Adapt to the person.** Learn early (DREAM) whether they will code or
+  review alongside you, or delegate fully. Technical founders: terse
+  questions, accept their picks, challenge only real conflicts.
+  Non-technical founders: **one recommendation, not a menu**, explained in
+  plain language, with the cost named in money and time.
+- **Search when freshness matters.** Stack recommendations, "does this already
+  exist" scans, platform constraints, pricing: verify with a web search
+  instead of trusting memory; note the date and source where the answer lands
+  (`stack.md`, `vision.md`, an ADR). Never pin a tool or config the ecosystem
+  has already deprecated — check when unsure.
+- **Never invent product facts.** "I don't know" is a valid answer: choose
+  sensibly, and log it in the **assumption ledger** (`docs/memory/context.md`
+  §Open questions) as *assumed — revisit*. Assumptions never masquerade as
+  the user's decisions.
+- **Commit only when asked.** The bootstrap ends with a *prepared, unexecuted*
+  first commit.
+- **Resuming a broken run:** if `GENESIS.md` is present but the root already
+  looks half-materialized (workshop swept, skeleton moved), a previous run
+  broke mid-flight — verify each MATERIALIZE step and continue from the first
+  unmet one.
 
 ---
 
-## 1. What you will produce (the end state)
+## 1. DREAM — understand the idea
 
-A fresh repo with this governance skeleton. Names are conventional; adapt only if
-the user asks. Trim parts that don't apply to the project's shape (e.g. drop
-`design/` if there is no UI).
+Open with one question, alone:
 
-```
-README.txt                         # project entry point (Markdown) → renamed README.md on bootstrap
-SECURITY.md                        # GitHub-visible pointer → docs/process/security.md
-CHANGELOG.md                       # skeleton version history (fork may keep or delete)
-AGENTS.md                          # SINGLE SOURCE OF TRUTH (rules, stack, repo map)
-CLAUDE.md                          # thin wrapper → points to AGENTS.md (Claude Code; ships by default)
-.cursor/rules/000-start-here.mdc   # Cursor entry (ships by default); Codex/Copilot/Gemini entries — generated on demand only when that tool is in use
-docs/
-  README.md                        # docs index / map
-  product/
-    vision.md                      # why it exists, who it serves, differentiation
-    roadmap.md                     # living, phase-based plan
-  architecture/
-    overview.md                    # system architecture + diagram
-    stack.md                       # locked tech stack + versions
-    adr/                           # Architecture Decision Records (one per decision)
-      0001-*.md ...
-  design/                          # only if the project has a UI
-    design-system.md               # tokens, components, performance budget
-  process/
-    workflow.md                    # the two lanes (vibe / spec) + shared invariants
-    conventions.md                 # naming / API shape / logging / errors / commits
-    security.md                    # secrets, authz, input, dependencies, disclosure
-    definition-of-done.md          # quality gates
-    ai-session-protocol.md         # start/end-of-session ritual
-    automation.md                  # CI + hooks that enforce the gate
-  features/
-    _template.md                   # spec-before-code template
-  memory/
-    progress.md                    # done / in progress / next (AI writes every session)
-    context.md                     # current working state / tribal knowledge
-    decisions.md                   # short decision log (the "why", newest on top)
-skills/                            # portable, tool-agnostic SKILL.md capabilities
-  README.md _template/ wrap-session/ write-adr/ review-own-diff/ clean-code/
-  write-tests/ ponytail/
-.github/workflows/ci.yml           # templated quality-gate CI (no-op until filled)
-.gitignore .editorconfig ...       # ignores + baseline tooling config
-```
+> "Tell me your idea in your own words — as if to a friend. What exists in the
+> world once it's done?"
 
-> The **code** scaffold (apps/packages/build tooling) is a _later_ phase. This
-> file's job is the **governance foundation** that every subsequent session reads.
-> Put scaffolding into Phase 1 of the generated roadmap.
+Listen fully. Then, in batches:
 
-> **Already forked? (Mode B).** If you copied the Genesis repo, this entire tree
-> already exists as a templated skeleton — you do **not** generate it from
-> scratch. The interview just fills its `{{...}}` placeholders and adds the
-> project-specific docs. See §0.1.
+- **Who is it for?** Who is the *first* user — and does the founder have
+  access to them?
+- **What pain does it kill?** What do those people do about it today?
+- **Reality scan** *(do this yourself — search, don't ask)*: what already
+  exists? Reflect it back honestly: "X and Y do something close — what makes
+  yours worth building?" Differentiation comes from evidence, not adjectives.
+  Findings seed `vision.md`'s Market table at MATERIALIZE.
+- **How will the first ten users find it?** One sentence is enough — a product
+  nobody discovers was never shipped. If the reality scan contradicts the
+  founder's read of the market, deepen it into a short, source-backed market
+  brief before moving on — depth on demand, not a fixed phase.
+- **Stakes:** business or personal tool? Is revenue expected? Stakes calibrate
+  every later choice.
+- **Success and failure:** what does success look like in ~3 months? Complete
+  the sentence: *"we're wrong if ___ hasn't happened by ___."*
+- **The riskiest assumption:** what must be true for this to work that nobody
+  has verified yet?
+- **Budget:** hours per week, any deadline, and money available for services
+  (hosting, APIs, app-store fees).
+- **How technical are you?** Coding alongside, reviewing only, or fully
+  delegating? (This sets the interview's register from here on.)
 
----
+Write no files yet — keep notes.
 
-## 2. Discovery interview
+## 2. PRODUCT — shape the scope
 
-Ask these as grouped batches. **Skip any group that doesn't apply** to the
-project's shape. For every choice, propose a default and let the user confirm or
-override — never decide a stack or vendor for them silently.
+- **The proving flow.** Push the MVP down to the one end-to-end flow that
+  proves the idea. Everything else goes to *later* or *out of scope* — get all
+  three lists said out loud.
+- **Core concepts.** The 3–5 nouns of the domain and how they relate (the seed
+  of the data model — every future session needs these names).
+- **Compliance triggers.** Personal data? Payments? Health? Minors? Each is a
+  day-0 architecture fork, not a detail — flag consequences now.
+- **Non-functional needs, in the user's words.** How many people at once? Does
+  it work offline? Live updates? How fast must it *feel*?
 
-### A. Identity
+## 3. SHAPE & STACK — pick the tools
 
-- **Product name** and **codename/folder**.
-- **One-sentence pitch** (what it is, in a single line).
-- **Current status** (what stage the project is at right now).
-- **License + copyright holder** (default: MIT, owned by the user/org). The
-  skeleton ships `LICENSE` as a generic MIT © Genesis — the fork's `LICENSE`
-  must be rewritten with the project's own choice and owner (it carries no
-  `{{...}}`, so the placeholder guard won't catch it — rewrite it by hand).
-- **Entry-point README.** The skeleton ships two READMEs: `README.md` describes
-  Genesis itself (kept `.md` so it renders on the Genesis repo), and `README.txt`
-  is the project's own entry point as Markdown, held under `.txt` only to avoid
-  colliding with that meta `README.md`. On bootstrap, **delete the meta
-  `README.md`**, fill `README.txt`'s `{{...}}` placeholders and the
-  `project-structure` FILL block, then **rename `README.txt` → `README.md`** so
-  the fork lands with a single, well-rendered `README.md`.
+- **Shape first.** Web app · mobile · desktop · API service · CLI · library ·
+  data pipeline · game · embedded · extension · something else. Everything
+  branches from shape — there is no fixed layer checklist.
+- **Walk only the layers the shape implies.** For each pick: what, where it
+  runs, what it costs. Never skip these, any shape:
+  - language / runtime,
+  - **package identity** (module path, app id, dist/package name — painful to
+    change later; quick-check availability where it matters: registry, domain,
+    store; if the name itself is still open, `ideate` it),
+  - **where it runs and how it ships** (deploy target, distribution channel,
+    update path),
+  - **config & secrets** (where they live; never in source — provide
+    `.env.example` if env vars exist),
+  - **data** (store + how schema changes are managed) if state exists,
+  - **test runner** (non-negotiable, every shape),
+  - CI platform (the skeleton ships GitHub Actions; swap if the user hosts
+    elsewhere).
+- **Shape-typical extras** — ask only when implied: auth, billing, file
+  storage, background work, realtime, third-party APIs. For every external
+  vendor, name the **one module** that will import its SDK (vendor isolation,
+  `AGENTS.md` §3) and whether it is deliberately fixed or expected to swap.
+- **Technical founder:** take their stack; challenge only what conflicts with
+  DREAM/PRODUCT (scale, budget, deprecated tooling) — with sources.
+- **Non-technical founder:** propose **one** boring, proven, well-documented
+  stack; say why in plain words; name the monthly cost. Search first if your
+  knowledge might be stale.
+- Record picks and versions for `stack.md`; a rejected live alternative means
+  an ADR (numbered from 0002 — 0001 is the adoption seed).
 
-### B. Product (vision)
+## 4. DESIGN — the experience (every project has one)
 
-- **Problem** it solves (the #1 pain).
-- **Solution** approach (the core mechanism / unfair advantage).
-- **Target users** (who, technical level).
-- **Differentiation** (why this over alternatives).
-- **MVP scope** vs **out-of-scope (for now)**.
+**If there is a visual layer** (web/mobile/desktop UI), ask who provides the
+design:
 
-### C. Tech stack
+1. **The founder provides it** — Figma files or links, a brand guide, an
+   existing site to match. Index the sources in `docs/design/README.md`;
+   extract tokens (colors, type, spacing) into the design language.
+2. **You define it** — a minimal design language: tokens, the component list
+   the MVP needs, an accessibility baseline, a performance budget →
+   `docs/design/design-language.md`. Run the `ideate` skill on the direction
+   first: 3–5 genuinely different directions, converge, record.
+3. **Claude Design handoff** — offer this once the scope is clear: generate a
+   tailored brief from everything learned (product, audience, tone words, the
+   page/flow list, brand seeds, constraints) that the founder hands to Claude
+   Design; it interviews them and produces sample page designs + a design
+   language. Hand the brief over in chat — it is written to
+   `docs/design/brief.md` at MATERIALIZE (no files before CONFIRM). Returned
+   assets land in `docs/design/` with a `README.md` that indexes them and
+   names what is canonical; if they aren't back by MATERIALIZE, record the
+   pending state there and build against a minimal interim design language.
 
-Walk only the layers the project actually needs. For each, ask the user's
-preference; if they have none, propose options suited to their ecosystem and let
-them pick. Possible layers (not a checklist to force):
+Whichever path: `docs/design/README.md` states what is canonical, so the
+Definition of Done's design box has a referent. `docs/design/` exists **only**
+for projects with a visual layer.
 
-- **Project type & repo shape** — single package or multi-package workspace? Which
-  workspace/build tooling fits the chosen ecosystem?
-- **Language(s) / runtime(s).**
-- **Frontend / UI** (if any) — framework, styling.
-- **Backend / services** (if any) — framework.
-- **Data layer** — database/store + how migrations are managed (if any).
-- **Background work** — queue / scheduler / jobs (if any long-running work).
-- **Realtime / messaging** (if needed).
-- **Auth / identity** (if needed).
-- **Billing / payments** (if needed).
-- **Storage** — files/assets/blobs (if needed).
-- **Heavy/external compute or third-party APIs** — a separate runtime "world"?
-- Pin **versions** where it matters (record in `stack.md`).
-- **Choose modern, non-deprecated tooling defaults — don't carry legacy ones.**
-  When pinning a compiler/runtime config, avoid options already deprecated and
-  slated for removal. _Example (TypeScript):_ don't use `moduleResolution: "node"`/
-  `"node10"` or `baseUrl` — both are removed in TS 7.0. Use `moduleResolution:
-  "bundler"` (bundled libs/apps) or `"nodenext"` (Node services), and express
-  path aliases via `paths` (relative, no `baseUrl`). Carrying a legacy default
-  into a fresh project just schedules a forced migration later.
+**If there is no visual layer**, the experience still gets designed — write an
+**Interface UX** section into `docs/process/conventions.md`:
 
-> For every layer that depends on an **external vendor**, default to **provider
-> independence**: put it behind an interface/adapter so it can be swapped. Confirm
-> with the user which dependencies are pluggable vs. deliberately fixed.
+- CLI: command/verb scheme, flags vs args, output modes (human table vs
+  `--json`), error style (cause + suggested fix, to stderr), exit codes,
+  TTY-vs-pipe behavior.
+- API/service: endpoint shape, error envelope, pagination, versioning policy.
+- Library: the public API surface, naming idiom, the "hello world" snippet a
+  reader sees first.
 
-### D. Architecture constraints
+## 5. PLAN — roadmap, decisions, paper trail
 
-- **Separate worlds / boundaries?** Are there parts in a different language,
-  runtime, repo, or image with a hard boundary between them? Define it.
-- **Sync vs async** — should long operations be **job-based + event-driven**
-  (queue + push) rather than blocking? (Recommended whenever long work exists.)
-- **Module boundaries** — should domains avoid importing each other directly, with
-  shared contracts living in one place? (Recommended for anything non-trivial.)
-- **Single-source-of-truth rules** — is there a piece of state that must be the
-  one authority for something? Name it.
-- **Contract-first rules** — is there anything that must not be built before its
-  contract/schema/spec exists? Name it.
-- **Performance expectations** — are there latency/throughput targets or budgets
-  worth stating up front (e.g. an endpoint's p95, a job's runtime)? Stack-specific
-  and optional, but ask early; record any that the user names. (UI projects also
-  get a perf budget in the design system — §E.)
+- **Roadmap** (`docs/product/roadmap.md`): Phase 0 = governance + hello-world
+  scaffold (done at bootstrap's end) · feature phases from the MVP lists, each
+  with what "done" means · the maturity gate (spec lane + PR review at
+  alpha/beta).
+- **Decisions:** one `docs/memory/decisions.md` line per locked decision; an
+  ADR only where a live alternative was rejected. The interview's objections
+  and overrules land here too.
+- **Feature specs are not pre-written.** The roadmap names features; a spec is
+  written when its work starts, per lane (`workflow.md`). Interview knowledge
+  belongs in `vision.md` / `stack.md` / `overview.md` — don't launder guesses
+  into specs.
+- **`vision.md`** gets: problem, solution, first user, evidence-based
+  differentiation, the Market table (from the reality scan — post-MVP
+  competitor deep-dives update it via the spec lane), the "we're wrong if"
+  line, the riskiest assumption.
+- **`context.md`** gets: stage, constraints, the assumption ledger, the
+  skeleton version (from the upstream `CHANGELOG.md`), a hint for the next
+  agent.
+- **Gotchas discovered along the way** (platform limits, API quirks, pricing
+  cliffs found while searching) are seeds for `AGENTS.md` §11 — note them now,
+  write them at MATERIALIZE.
+- **Process defaults** — confirm, don't interrogate: repo language (default
+  English) · vibe lane while solo/pre-alpha · commit convention (default
+  Conventional Commits) · which agent tools read the repo (Claude Code +
+  Cursor ship pre-wired; entry files for others on demand) · research and add
+  **project-type skills** for the chosen stack into `skills/`? · optional
+  per-tool slash commands (ask, never pre-generate) · MCP servers only for a
+  **named need** (an external service the project must touch; symbol-level
+  navigation once the codebase outgrows grep) — research current options at
+  wiring time (the freshness rule), never from memory; a greenfield project
+  rarely needs any on day one · multi-agent orchestration only if genuinely
+  used.
 
-### E. Design (only if there is a UI)
+## 6. CONFIRM — the contract
 
-- Brand feel / tone (let the user describe it).
-- Need a **design system** (tokens + components + performance budget)?
-- Marketing/landing surface? Rendering mode.
-- Accessibility + motion expectations.
+Summarize back, compactly:
 
-### F. Process & tooling
+- identity + one-line pitch · the proving flow + later/never lists
+- stack table + where it runs and ships · design source
+- roadmap phases · repo language, lane, tools
+- **what you pushed back on and how it resolved** · the assumption ledger
 
-- **Repo language policy** — which single language is written into the repo?
-  (Conversation can be any language; the repo is one.)
-- **Which agents/tools** will read the repo (Claude Code, Cursor, Codex, Copilot,
-  Gemini, ...)? Generate the matching entry file for each one in use.
-- **Default lane** — the workflow has a **vibe** and a **spec** lane sharing the
-  same invariants (`docs/process/workflow.md`). Default to **vibe** while
-  solo/pre-alpha; confirm when the spec lane + PR review takes over (alpha/beta).
-- **Skills** — the built-in general skills (`wrap-session`, `write-adr`,
-  `review-own-diff`, `clean-code`, `write-tests`, `ponytail`) ship already;
-  `ponytail` (minimal code) is the always-on baseline
-  ([ADR-0004](docs/architecture/adr/0004-vendor-ponytail-caveman-skills.md)).
-  Ask whether to **research and add project-type skills** (from skill
-  registries / the web) for the chosen stack, into `skills/`.
-- **Skill wiring (per tool in use)** — `skills/` stays the single source, but
-  each agent tool discovers skills natively so descriptions load lazily
-  (progressive disclosure) instead of relying on the agent reading `AGENTS.md`
-  §8 voluntarily. Claude Code (`.claude/skills/` symlinks) and Cursor
-  (`.cursor/rules/000-start-here.mdc` names the always-on skills and points at
-  `skills/`) ship pre-wired in the skeleton — keep both in sync when skills are
-  added/removed. Other tools — their native skill/rule location, pointing at
-  `skills/`, generated on demand for tools actually in use.
-- **Slash commands** — optional, **tool-specific** ritual wrappers (`/wrap`,
-  `/adr`, `/feature`, lane-switch), one set per agent in use, mapping to the
-  `skills/`. **Do not pre-generate them.** Based on the tool the user is
-  currently working in, **ask** whether to create command files; generate only
-  what they want, in that tool's format. This stays the user's standing decision
-  — offer it again later, on demand.
-- **MCP / external tools** to wire (if any) → fill `AGENTS.md` §9. Worth
-  suggesting: a code-navigation MCP (e.g. **Serena** — LSP-based, symbol-level
-  reads instead of whole files; token-efficient once real code exists — wire it
-  post-scaffold and re-index as the code grows).
-- **Multi-agent orchestration** — will sub-agents/parallel roles be used? If so,
-  fill `AGENTS.md` §10 and generate sub-agent definition files for the tools in
-  use (Claude Code: `.claude/agents/`, Cursor: `.cursor/agents/` — near-identical
-  markdown + YAML-frontmatter format), with roles drawn from the interview
-  (stack, boundaries). **Do not pre-generate them** — same on-demand rule as
-  slash commands; generic roles are already covered by each tool's built-in
-  agents. Otherwise leave §10 out.
-- **Commit convention** (e.g. Conventional Commits) + branch naming.
-- **Commit-on-demand** rule (recommended: never commit unless asked).
-- **Testing (always ask — not optional).** Which **test runner** fits the chosen
-  stack (Vitest/Jest, pytest, `go test`, …)? Confirm the levels that apply
-  (unit / integration / e2e), a coverage floor, and that **test-first** holds in
-  the spec lane. A project is never set up without a configured runner; record
-  the command in `AGENTS.md` §6 and `.github/workflows/ci.yml`.
-- **Quality gates** for Definition of Done (lint, typecheck, tests, format — as
-  applicable). Fill the CI commands in `.github/workflows/ci.yml` once known.
-  Offer local pre-commit hooks in the stack's idiom (e.g. husky + lint-staged +
-  commitlint for JS/TS, `pre-commit` for Python) — fast checks locally, slow
-  ones in CI (`docs/process/automation.md`).
-- **Non-obvious patterns** — capture any known footguns/gotchas into `AGENTS.md`
-  §11 (highest-signal section); keep adding to it as they're discovered.
-- **Task tracking** — start with an in-repo markdown roadmap, move to issues later?
+Then ask: **"Shall I build the foundation with these decisions?"**
+Proceed only on an explicit yes; apply corrections first.
 
-### G. Roadmap
+## 7. MATERIALIZE — build it
 
-- Break the work into **phases** (Phase 0 = governance, Phase 1 = scaffold, then
-  feature phases). Confirm the phase ordering and what "done" means per phase.
+In order — each step verifiable before the next:
 
----
+1. **Sweep the workshop.** First note the skeleton version from
+   `CHANGELOG.md` — `context.md` needs it after the sweep. Then delete
+   everything at the repo root **except** `.git/`, `templates/`, and
+   `GENESIS.md` (this file survives until the work is verified, so a broken
+   session can resume the protocol).
+2. **Move the skeleton.** Move `templates/`'s contents — dotfiles included —
+   to the root; remove the empty `templates/`.
+3. **Fill.** Resolve every `{{...}}` placeholder and every FILL-marked block
+   in the moved files with interview content — each FILL comment says what
+   belongs in it; this file does not repeat them. Write the design output
+   (§4) and, for non-visual shapes, the Interface UX section. **Prune what
+   doesn't apply** — delete sections and files rather than leaving empty
+   shells; an empty section costs tokens every session and tells the next
+   agent nothing. Git remembers if the shape changes later.
+4. **Scaffold hello-world.** The smallest runnable entry point for the chosen
+   shape and stack · the test runner configured with **one passing smoke
+   test** · real commands wired into `.github/workflows/ci.yml` (delete steps
+   that don't apply) and `AGENTS.md` §6 · then complete `AGENTS.md`'s repo map
+   from what now exists. No feature code — that's the roadmap's job.
+5. **Verify.** Run the test (green), run the guard command from `ci.yml`
+   locally (clean), run lint/build if wired. Never hand over red.
+6. **Delete `GENESIS.md`** — everything is verified green, its job is done.
+   Remove any reference to it; the "bootstrapped with
+   [Genesis](https://github.com/0xBeycan/genesis)" attribution in the README
+   may stay.
+7. **Prepare the first commit.** Stage everything; write the message in the
+   chosen convention (e.g. `feat: bootstrap <name> from the Genesis
+   skeleton`); show it. **Do not commit unless asked.**
+8. **Hand over.** What was created · the locked decisions and where each "why"
+   lives · the assumption ledger · the recommended next step.
 
-## 3. Confirm before generating
-
-Summarize everything back to the user as a compact spec:
-
-- Identity + one-sentence pitch
-- Stack table (layer → choice)
-- Architecture constraints + which dependencies are behind adapters
-- Phase list for the roadmap
-- Tooling/agent entry files to generate
-- Repo language policy
-
-Then ask: **"Shall I generate the governance foundation with these decisions?"**
-Generate only after an explicit yes. Apply any corrections first.
-
----
-
-## 4. Generate the governance foundation
-
-Create the tree from §1. Guidance per file:
-
-- **`AGENTS.md` (canonical).** The single source of truth. Suggested sections, in
-  order: `0` Language policy (mandatory) · `1` Project in one sentence · `2`
-  Session protocol (read-at-start / update-at-end) · `3` Golden rules + a **NEVER**
-  list · `4` Tech stack summary table · `5` Repo map (target structure) · `6`
-  Commands (fill once the scaffold exists) · `7` Sections/menus (if applicable) ·
-  `8` Tool-specific files. State clearly: _"If a rule changes, update only this
-  file; others reference it."_
-
-- **`CLAUDE.md`.** Thin. Points to `AGENTS.md`, restates only the language
-  policy and the session-ritual pointers. No rule content — a pure pointer.
-
-- **`.cursor/rules/000-start-here.mdc`.** Ships by default (like `CLAUDE.md`).
-  Front-matter `alwaysApply: true` + `description`. A pure pointer: read-order
-  list, the always-on skill (`ponytail`), end-of-session checklist
-  pointer — no duplicated rule content. This is what auto-injects the protocol
-  into Cursor.
-
-- **`README.txt`.** The project's entry point for humans and agents, written in
-  Markdown (kept `.txt` only so it doesn't collide with Genesis's own meta
-  `README.md`). Restates the read-order, carries a short project-structure map,
-  and points to `AGENTS.md` for all rules. On bootstrap it is renamed to
-  `README.md` (§2A).
-
-- **`docs/README.md`.** The docs map + "who writes what" (humans write
-  product/architecture/design/process; AI writes memory/ every session, plus ADRs
-  and feature specs as needed).
-
-- **`docs/product/vision.md` + `roadmap.md`.** From interview §B and §G. Roadmap
-  uses `[ ] todo · [~] in progress · [x] done`, marks Phase 0 as done at the end
-  of bootstrap, and notes "Continuous (every phase)" rules.
-
-- **`docs/architecture/overview.md` + `stack.md`.** Architecture diagram +
-  locked stack with versions. `stack.md` is the detailed companion to AGENTS §4.
-
-- **`docs/architecture/adr/`.** Open **one ADR per locked decision** from the
-  interview (governance model, each stack choice, provider-independence rules,
-  job/event model, contract-first rules, design system, task tracking, ...).
-  ADR format: `Status` (Proposed/Accepted/Superseded) · `Context` · `Decision` ·
-  `Consequences`. Number them `0001`, `0002`, ... When a decision changes later,
-  open a **new** ADR and mark the old one `Superseded` — never edit silently.
-
-- **`docs/design/design-system.md`** (only if there is a UI). Tokens, components,
-  performance budget, accessibility, brand.
-
-- **`docs/process/*`.**
-  - `workflow.md` — the loop: `READ → SPEC → TEST → PLAN → BUILD → VERIFY → RECORD → COMMIT`.
-  - `conventions.md` — naming, project structure, API shape (success/error
-    envelopes), logging & observability, errors, realtime events, authorization
-    (deny-by-default), validation/config, testing, commits & branches. Include
-    only what applies.
-  - `security.md` — secrets handling, authorization, input validation,
-    dependency/supply-chain hygiene, vulnerability disclosure.
-  - `definition-of-done.md` — the quality-gate checklist (code, contracts, design,
-    security, docs/memory, UX).
-  - `ai-session-protocol.md` — the start/during/end ritual in detail.
-
-- **`docs/features/_template.md`.** Spec-before-code template: status, problem,
-  scope, **input contract** (if applicable), flow, acceptance criteria, out-of-scope.
-
-- **`docs/memory/*`.** Initialize:
-  - `progress.md` — first entry dated, "Phase 0 governance foundation created",
-    plus the Next step (usually Phase 1 scaffold). Newest on top.
-  - `context.md` — current stage, active constraints, assets on hand, open
-    questions, a "hint for the next agent".
-  - `decisions.md` — one short line per locked decision, linking to its ADR.
-
-- **Ignores + tooling.** `.gitignore`, `.editorconfig`, formatter/linter config
-  as appropriate to the stack. **Never** commit secrets; provide a `.env.example`
-  if env vars exist.
-
----
-
-## 5. Non-negotiable standards (carry these to every project)
-
-These are the principles that make a project sustainable for "today an AI,
-tomorrow a human, next week another team". Bake them into the generated docs:
-
-1. **Single source of truth + thin wrappers.** One canonical `AGENTS.md`; every
-   other tool file is a pointer that stays in sync automatically.
-2. **Language policy.** The repo is one language; chat is free.
-3. **Memory bank + session protocol.** Read memory at start, update it at end.
-   The trail you leave is the next agent's starting point.
-4. **Spec before code.** Every feature starts from `docs/features/<name>.md`.
-5. **ADR for every architecture/tech decision.** Decisions are traceable and
-   reversible-by-supersession, never silent.
-6. **Provider independence.** External vendors sit behind interfaces/adapters
-   (Strategy/Adapter); no single vendor is hardcoded.
-7. **Job-based + event-driven** for long work — queue + push, no blocking/polling
-   (when the domain has long-running jobs).
-8. **Module boundaries / no spaghetti.** Domains don't import each other; shared
-   contracts live in one place. Small, single-responsibility files. No god classes.
-9. **Test-first, always tested.** Every project configures a stack-appropriate
-   test runner in Phase 1; behavior-changing code ships with a test (written
-   first in the spec lane). Tests assert behavior/contracts, not implementation.
-10. **Definition of Done is a gate.** Lint + typecheck + tests + format + docs +
-    memory update, every time (as applicable to the stack).
-11. **Respect the design system** (if there is a UI): tokens/components, stylish
-    but fast.
-12. **Conventional Commits** (or the chosen convention), and **commit only when
-    the user asks.**
-13. **Comments explain "why", not "what".** Repo language only.
-
-> **NEVER:** write the wrong language into the repo · commit secrets (`.env`,
-> keys) · commit large binaries/build artifacts · hardcode a single external
-> vendor · build a contract-dependent part before its contract exists · break
-> module boundaries · ship behavior-changing code with no test · auto-commit
-> without being asked.
-
----
-
-## 6. End-of-bootstrap ritual
-
-After generating the foundation:
-
-1. **Reset `docs/memory/progress.md`** to the project's own first entry
-   ("Phase 0 governance foundation from the interview" + Next). The skeleton's
-   maintenance entries are upstream history — they live in the Genesis repo and
-   `CHANGELOG.md`, not in the fork's memory. `docs/memory/decisions.md` is
-   different: **keep** the inherited skeleton-decision lines (their ADRs ship
-   in the fork) and add the interview decisions on top.
-2. Make sure **`docs/memory/decisions.md`** lists every locked decision → ADR.
-3. Mark **Phase 0** done in the roadmap; leave Phase 1 (scaffold) as the next step.
-4. **Prune what doesn't apply** — delete, don't leave empty templates: `design/`
-   if there is no UI, the API-shape block in `conventions.md` for non-API
-   projects, unused `stack.md` rows, `AGENTS.md` §9 if no MCP/external tools
-   and §10 if single-agent, non-applicable DoD lines. An empty section costs
-   tokens every session and tells the next agent nothing; git remembers if the
-   shape changes later.
-5. **Placeholder guard:** run the command from the commented "No placeholders
-   left" step in `.github/workflows/ci.yml` — that step is the canonical copy
-   of the check. Resolve every leftover (and rewrite `LICENSE`, which the grep
-   can't see — §2A), then enable (uncomment) the step.
-6. **Record the skeleton version** (the `v*` at the top of this file /
-   `CHANGELOG.md`) in `docs/memory/context.md`, so the fork knows what it
-   diverged from.
-7. **Delete `GENESIS.md`** — the protocol's job is done and it lives upstream;
-   ~20KB of bootstrap instructions has no reader after Phase 0. Also remove any
-   pointer left to it (e.g. a "See GENESIS.md" mention in the project `README.md`)
-   so nothing references a deleted file; the "bootstrapped with Genesis"
-   attribution link may stay. If the user prefers to keep `GENESIS.md`, note that
-   choice in `docs/memory/decisions.md`.
-8. Summarize to the user: what was created, the locked decisions, and the
-   recommended next step. **Do not commit** unless asked.
-
-> From here on, every future session just reads `AGENTS.md` + the memory bank and
-> continues — the structure never needs to be re-explained. That is the whole point.
+> The protocol ends here. From the next session on, the project speaks for
+> itself: read `AGENTS.md` + the memory bank and continue. That is the whole
+> point.

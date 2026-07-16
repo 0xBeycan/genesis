@@ -1,0 +1,42 @@
+# Quality-gate CI — turns the Definition of Done into an enforced gate.
+#
+# Ships with the skeleton and only runs once the skeleton sits at the repo
+# root (GitHub runs root workflows only). The command steps are echo-TODOs
+# until Phase 1 wires the real stack commands (docs/process/automation.md).
+
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # --- Toolchain setup (add your stack's setup steps here) ---
+
+      - name: Install
+        run: echo "TODO(ci) wire the install command"
+
+      - name: Lint
+        run: echo "TODO(ci) wire the lint command"
+
+      - name: Typecheck
+        run: echo "TODO(ci) wire the typecheck command" # drop if untyped
+
+      - name: Test
+        run: echo "TODO(ci) wire the test command"
+
+      - name: Build
+        run: echo "TODO(ci) wire the build command"
+
+      # Post-bootstrap guard: fails while any interview placeholder or
+      # unresolved fill-marker survives in a doc/config surface. Scoped to doc
+      # extensions because source code legitimately uses the double-brace
+      # syntax (Vue/Jinja/Handlebars). The prefix skips GitHub Actions
+      # expression syntax, and the bracketed spellings keep this file from
+      # matching itself. _template files are blank forms and stay exempt.
+      - name: No placeholders left
+        run: |
+          ! git grep -nE '(^|[^$])[{][{]|GENESIS[:]FILL' -- '*.md' '*.mdc' '*.yml' '*.yaml' ':!*_template*' ':!GENESIS.md'

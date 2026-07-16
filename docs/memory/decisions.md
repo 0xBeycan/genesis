@@ -2,6 +2,15 @@
 
 > One short line per locked decision, newest on top, linking its ADR.
 
+- GENESIS.md v2: single-mode, seven-phase, challenge-first founder interview;
+  design phase with Claude Design handoff option; bootstrap ends with a green
+  hello-world and a prepared first commit →
+  [ADR-0008](../architecture/adr/0008-genesis-founder-interview.md)
+- Product/workshop split: the skeleton lives in `templates/` (root = Genesis
+  workshop); test-first both lanes; lane-bound specs; vendor isolation (SDK in
+  one module); ADR threshold = rejected alternative; version single-sourced in
+  `CHANGELOG.md` →
+  [ADR-0007](../architecture/adr/0007-product-workshop-split.md)
 - Dropped `caveman`: benchmarked +7% tokens / +3% cost vs baseline, so it cost
   more than it saved; `ponytail` is the sole always-on skill →
   [ADR-0006](../architecture/adr/0006-drop-caveman-skill.md)

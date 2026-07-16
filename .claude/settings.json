@@ -5,8 +5,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Always-on skill (Claude equivalent of Cursor alwaysApply): follow skills/ponytail (write the least code that works) in EVERY response. Open other skills in skills/ when their description matches the task.'",
-            "statusMessage": "Loading always-on skill"
+            "command": "echo 'Always-on skill: follow templates/skills/ponytail (write the least code that works) in EVERY response. This repo is the Genesis workshop — the product lives in templates/; any change there ships with a CHANGELOG.md entry.'",
+            "statusMessage": "Loading Genesis workshop context"
           }
         ]
       }

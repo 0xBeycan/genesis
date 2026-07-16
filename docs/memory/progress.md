@@ -2,6 +2,48 @@
 
 > Newest entry on top. Each entry: what changed + the **Next step**.
 
+## 2026-07-16 — GENESIS.md v2: founder-interview protocol (v0.8.0)
+
+- Rewrote `GENESIS.md` ground-up per the locked Q&A decisions
+  ([ADR-0008](../architecture/adr/0008-genesis-founder-interview.md)):
+  single mode, seven challenge-first phases, adaptive to technical and
+  non-technical founders, web search where freshness matters, assumption
+  ledger, a design phase (founder-provided / agent-defined / Claude Design
+  handoff; Interface-UX in `conventions.md` for non-visual shapes), and a
+  MATERIALIZE step that sweeps the workshop, moves `templates/`, scaffolds a
+  hello-world with one passing test + real CI, verifies locally, and prepares
+  an unexecuted first commit. No version string, standards copy, tree, or
+  per-file guide remains in the protocol.
+- Root `README.md` and `context.md` updated to drop the "protocol is stale"
+  interim notes.
+- Same-session follow-ups: new `ideate` skill (option space before big
+  decisions; portfolio rule added to `skills/README.md`), `vision.md` gained a
+  living Market table, and every tool name-drop was replaced by
+  research-at-wiring-time rules — a final sweep left placeholders carrying no
+  suggested answers.
+- **Next step:** dogfood run — bootstrap a throwaway sample project with the
+  new protocol end-to-end and feed friction back into `GENESIS.md`.
+
+## 2026-07-16 — Product/workshop split + process recalibration (v0.7.0)
+
+- Verified an external 32-finding review file-by-file (its blockers were real:
+  the vibe-lane test contradiction, the Mode-A/Mode-B divergence, guard blind
+  spots, rules duplicated across files), then locked twelve decisions with the
+  user and applied them —
+  [ADR-0007](../architecture/adr/0007-product-workshop-split.md).
+- The whole skeleton now lives in `templates/` (memory seeds included; old
+  `README.txt` became `templates/README.md`); the root is Genesis's own
+  workshop: minimal dev `AGENTS.md`, skill symlinks retargeted into
+  `templates/skills/`, and live CI (no placeholder syntax outside `templates/`;
+  a `templates/` diff without a CHANGELOG entry fails).
+- Recalibrated the product's rules: test-first in both lanes, lane-bound
+  specs, vendor isolation (SDK in one module), rejected-alternative ADR
+  threshold, invariants single-homed in `AGENTS.md` §3. Fixed the dead
+  upstream URL (`0xBeycan`) and ADR-0006's stray tool-syntax tail; reworded
+  old entries here so the root carries no placeholder-like syntax.
+- **Next step:** rebuild `GENESIS.md` from scratch (interview design session);
+  its top note marks it stale until then.
+
 ## 2026-07-16 — Drop caveman (v0.6.0)
 
 - Removed `skills/caveman/` + its `.claude/skills/` symlink. Trigger: ponytail's
@@ -42,7 +84,7 @@
   code-navigation MCP (post-scaffold) and stack-idiom pre-commit hooks
   (husky / `pre-commit`) — recommendations only; both are per-project installs,
   nothing to install in the skeleton itself.
-- **Next step:** run the Genesis interview to fill `{{...}}`, or revisit issue
+- **Next step:** run the Genesis interview to fill the placeholders, or revisit issue
   templates/CODEOWNERS if/when a second contributor joins.
 
 ## 2026-07-11 — Governance hardening after full-skeleton audit
@@ -59,7 +101,7 @@
   pointer.
 - New guards: `progress.md` rotation rule (>10 entries → archive all but newest
   5), wrapper re-sync step in the end-of-session checklist, prompt-cache
-  stability rule for `AGENTS.md`, placeholder `grep '{{'` check + commented CI
+  stability rule for `AGENTS.md`, a placeholder grep check + commented CI
   step, `GENESIS.md` deletion added to the §6 bootstrap ritual.
 - New files: `CHANGELOG.md` (skeleton versioning for forks), root `SECURITY.md`
   pointer, ADR-0005. `.claude/settings.local.json` added to `.gitignore`.
@@ -67,7 +109,7 @@
   per-tool discovery (Claude Code `.claude/skills/` symlinks, Cursor rule
   pointer) so skill bodies load lazily; `automation.md` gained a cost-hygiene
   section (model routing, sub-agent fan-out).
-- **Next step:** run the Genesis interview to fill `{{...}}`, or revisit issue
+- **Next step:** run the Genesis interview to fill the placeholders, or revisit issue
   templates/CODEOWNERS if/when a second contributor joins.
 
 ## 2026-07-11 — Vendor ponytail + caveman skills (less code, fewer tokens)
@@ -90,7 +132,7 @@
 - Evaluated and rejected context-compression proxies (Headroom): machine-level,
   ~15–20% realistic gain for coding agents, provider-cache/quality risk —
   rationale in ADR-0004.
-- **Next step:** run the Genesis interview to fill `{{...}}`, or revisit issue
+- **Next step:** run the Genesis interview to fill the placeholders, or revisit issue
   templates/CODEOWNERS if/when a second contributor joins.
 
 ## 2026-06-19 — Close governance gaps (security, logging, PR template, CI doc)
@@ -110,7 +152,7 @@
 - Deliberately skipped (per decision): CI auto-trigger, CHANGELOG (progress.md
   covers it pre-release), data-layer process doc (DB+migration questions suffice),
   `.env.example` (created per project), slash commands (agent-agnostic).
-- **Next step:** run the Genesis interview to fill `{{...}}`, or revisit issue
+- **Next step:** run the Genesis interview to fill the placeholders, or revisit issue
   templates/CODEOWNERS if/when a second contributor joins.
 
 ## 2026-06-19 — Bake test-first discipline into the skeleton
@@ -123,14 +165,4 @@
 - Recorded the decision in [ADR-0003](../architecture/adr/0003-test-first-discipline.md)
   (refines the spec-lane loop from ADR-0002); runner stays a stack choice.
 - **Next step:** consider a `skills/write-tests/` skill and adding `push`/`pull_request`
-  triggers to `ci.yml`; otherwise run the Genesis interview to fill `{{...}}`.
-
-## {{DATE}} — Phase 0: governance foundation (from Genesis skeleton)
-
-- Forked the Genesis skeleton: `AGENTS.md`, `CLAUDE.md`, `README.txt`, the
-  `docs/` tree, the memory bank, the `skills/` tree, CI scaffold, and
-  ADR-0001/0002 are in place.
-- Workflow is **two-lane** (strict vibe + spec); vibe is the pre-alpha default.
-- **Next step:** run the Genesis interview (`GENESIS.md`) to fill the `{{...}}`
-  placeholders, choose the default lane + which skills to seed + MCP/CI, and
-  generate the project-specific docs, then start Phase 1 (scaffold).
+  triggers to `ci.yml`; otherwise run the Genesis interview to fill the placeholders.

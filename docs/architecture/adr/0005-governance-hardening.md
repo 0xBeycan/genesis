@@ -2,7 +2,10 @@
 
 ## Status
 
-Accepted
+Accepted — amended by [ADR-0007](0007-product-workshop-split.md): the version's
+single source is now `CHANGELOG.md` alone, and the bootstrap-guard design is
+superseded by the `templates/` split (live root CI; the product's CI ships
+active, inert by location).
 
 ## Context
 

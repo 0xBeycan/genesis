@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Always-on skill (Claude equivalent of Cursor alwaysApply): follow skills/ponytail (write the least code that works) in EVERY response. Open other skills in skills/ when their description matches the task.'",
+            "statusMessage": "Loading always-on skill"
+          }
+        ]
+      }
+    ]
+  }
+}

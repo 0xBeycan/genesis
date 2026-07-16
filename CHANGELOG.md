@@ -4,6 +4,78 @@ Versions of the **skeleton itself**, so a forked project knows what it diverged
 from and can cherry-pick upstream improvements. Forks: keep this file as-is (or
 delete it); your own history lives in `docs/memory/progress.md`.
 
+## v0.8.0 — 2026-07-16
+
+- **`GENESIS.md` rewritten from scratch as a founder-interview protocol**
+  ([ADR-0008](docs/architecture/adr/0008-genesis-founder-interview.md)):
+  single mode (brings `templates/` to life; the old Mode-A generation path is
+  gone), seven challenge-first phases (DREAM → PRODUCT → SHAPE & STACK →
+  DESIGN → PLAN → CONFIRM → MATERIALIZE) that adapt to technical and
+  non-technical founders, require web search where freshness matters, and
+  record unknowns in an assumption ledger. The design phase offers three
+  sources — founder-provided, agent-defined, or a Claude Design handoff brief
+  saved under `docs/design/` — and non-visual shapes get an Interface-UX
+  section in `conventions.md`. Bootstrap now ends with a running hello-world,
+  one passing smoke test, real CI commands, a locally verified guard, and a
+  prepared-but-unexecuted first commit. The protocol carries no version
+  string, no standards copy, no tree, and no per-file guide — `templates/`
+  and its FILL comments are the single source. A CTO walkthrough then
+  tightened the sequence — the skeleton version is noted before the sweep,
+  the Claude Design brief is written at MATERIALIZE (never mid-interview),
+  and `GENESIS.md` is deleted *before* the first commit is staged — and added
+  a first-ten-users question, on-demand market-brief depth, name-availability
+  checks, §11 gotcha seeding, and a broken-run resume rule. An agent-eye
+  simulation of post-bootstrap life then added `vision.md`'s living **Market**
+  table (seeded by the reality scan; post-MVP competitor deep-dives update it
+  in the spec lane), a change-both-together warning on `AGENTS.md` §6 ↔
+  `ci.yml` commands, and a size trigger (~120 lines) on the progress-rotation
+  rule.
+- New built-in skill: **`ideate`** — a procedural diverge-then-converge step
+  for decisions with real design freedom (fix constraints → 3–5 genuinely
+  different options incl. a wildcard → converge → record rejects via the ADR
+  threshold). On-demand, never always-on: it opens the option space that
+  `ponytail` then minimizes, so the two chain instead of clashing.
+  `GENESIS.md` points at it for design direction and open names. Portfolio
+  rule added to `skills/README.md`: a skill earns its slot only when its
+  absence produces a named, recurring failure.
+- Tool name-drops removed from the protocol and process docs (the same rot
+  class as the old TypeScript lecture): MCP servers are wired only for a
+  **named need**, with current options researched at wiring time — never on
+  day one; pre-commit hook managers are verified by a quick search when set
+  up. `AGENTS.md` §9 stays the agnostic registry. A follow-up sweep cleared
+  the remaining incidental examples too (runner-name lists in placeholder
+  hints, an npm/setup-node comment in the CI template, a scanner-name hint in
+  `security.md`) — placeholders now carry no suggested answers.
+
+## v0.7.0 — 2026-07-16
+
+- **Product/workshop split**
+  ([ADR-0007](docs/architecture/adr/0007-product-workshop-split.md)): the
+  entire skeleton now lives in **`templates/`** — `AGENTS.md`, `CLAUDE.md`,
+  the docs tree, memory seeds, skills, tool wiring, and CI. A fork's bootstrap
+  fills the placeholders, moves `templates/` to the repo root, and deletes the
+  workshop files. The root became Genesis's own workshop: a minimal dev
+  `AGENTS.md`, a real memory bank (template seed text moved into the product),
+  and live CI — no placeholder syntax outside `templates/`, and a `templates/`
+  change without a CHANGELOG entry fails.
+- **Process recalibration** (same ADR): test-first in **both** lanes (vibe:
+  `READ → TEST → BUILD → RECORD`); specs are lane-bound (vibe work records to
+  `progress.md`); **vendor isolation** (SDK imported in exactly one module;
+  adapter + contract test with the second implementation) replaces day-0
+  adapters; ADR threshold = a rejected live alternative; the shared invariants
+  live once, in `AGENTS.md` §3.
+- Guard hardening: the product's CI ships **active** (inert inside
+  `templates/`, arms on the bootstrap move), also matches unresolved
+  fill-markers, and now covers the memory bank; CI TODO steps no longer carry
+  placeholder braces. `README.txt` became `templates/README.md` (rename dance
+  gone). The version lives **only** in this file. Dead upstream URL fixed
+  (`0xBeycan`). The PR template points at the DoD instead of copying it.
+  ADR-0006's stray tool-syntax tail removed. Stack tables (`AGENTS.md` §4,
+  `stack.md`) ship as empty forms — the interview writes one row per layer the
+  project actually has, so no project shape is pre-assumed. The commit
+  convention has one home (`conventions.md`); the docs map's ADR wording
+  matches the new threshold.
+
 ## v0.6.0 — 2026-07-16
 
 - **`caveman` skill removed**

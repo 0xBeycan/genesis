@@ -56,5 +56,3 @@ audience is humans reviewing agent work.
 - Precedent worth keeping: an upstream's headline metric is measured on the
   upstream's workload. Check that the layer it optimizes is a layer this repo
   actually spends on before adopting it.
-</content>
-</invoke>

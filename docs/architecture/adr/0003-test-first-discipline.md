@@ -2,7 +2,10 @@
 
 ## Status
 
-Accepted
+Accepted — amended by [ADR-0007](0007-product-workshop-split.md): test-first
+now holds in **both** lanes (the vibe lane's "may follow the code" allowance
+is retired), and the adapter contract-test applies from the second
+implementation (vendor isolation).
 
 ## Context
 

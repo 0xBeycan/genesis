@@ -4,7 +4,10 @@
 
 Accepted — the `caveman` half is **superseded by
 [ADR-0006](0006-drop-caveman-skill.md)** (skill removed; benchmark showed it
-costs tokens rather than saving them). Everything below about `ponytail` stands.
+costs tokens rather than saving them). The `ponytail` half stands, except
+adaptation 2 (the provider-independence exception), retired by
+[ADR-0007](0007-product-workshop-split.md): vendor isolation removed the
+conflict.
 
 ## Context
 
