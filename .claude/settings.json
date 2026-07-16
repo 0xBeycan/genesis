@@ -5,8 +5,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Always-on skills (Claude equivalent of Cursor alwaysApply): follow skills/ponytail (write the least code that works) and skills/caveman (terse chat output; never compresses repo files) in EVERY response. Open other skills in skills/ when their description matches the task.'",
-            "statusMessage": "Loading always-on skills"
+            "command": "echo 'Always-on skill (Claude equivalent of Cursor alwaysApply): follow skills/ponytail (write the least code that works) in EVERY response. Open other skills in skills/ when their description matches the task.'",
+            "statusMessage": "Loading always-on skill"
           }
         ]
       }

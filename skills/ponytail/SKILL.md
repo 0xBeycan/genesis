@@ -107,8 +107,8 @@ whether the test exists.
 
 ## Notes (Genesis adaptations)
 
-- Ponytail governs **what you build**, not how you talk — pair with `caveman`
-  for terse chat output.
+- Ponytail governs **what you build**, not how you talk — chat output follows
+  the repo's normal prose rules.
 - Upstream ships per-tool plugins and hooks; here the distilled ruleset is the
   portable source of truth (see `skills/README.md`), so every agent reading
   `AGENTS.md` inherits it. Per-tool slash-command wrappers (e.g. `/ponytail`)

@@ -14,8 +14,7 @@ Read at the start of a session:
 2. The memory bank, per `docs/process/ai-session-protocol.md` §Start of session.
 
 Skills live in `skills/` (see `AGENTS.md` §8). **Always on — follow in every
-response:** `skills/ponytail/SKILL.md` (write the least code that works) and
-`skills/caveman/SKILL.md` (terse chat output; never compresses repo files).
+response:** `skills/ponytail/SKILL.md` (write the least code that works).
 Open the other skills when their description matches the task.
 
 End of session: run the checklist in `docs/process/ai-session-protocol.md`

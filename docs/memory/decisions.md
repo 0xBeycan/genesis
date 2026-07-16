@@ -2,6 +2,9 @@
 
 > One short line per locked decision, newest on top, linking its ADR.
 
+- Dropped `caveman`: benchmarked +7% tokens / +3% cost vs baseline, so it cost
+  more than it saved; `ponytail` is the sole always-on skill →
+  [ADR-0006](../architecture/adr/0006-drop-caveman-skill.md)
 - Cursor entry file + skill pointer ship by default (like Claude Code); other
   tools stay on-demand → `CHANGELOG.md` v0.5.0
 - Governance hardening: progress rotation, canonical session ritual, skeleton

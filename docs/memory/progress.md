@@ -2,6 +2,25 @@
 
 > Newest entry on top. Each entry: what changed + the **Next step**.
 
+## 2026-07-16 — Drop caveman (v0.6.0)
+
+- Removed `skills/caveman/` + its `.claude/skills/` symlink. Trigger: ponytail's
+  upstream benchmark table runs caveman as a terse-prose control and it lands
+  **+7% tokens, +3% cost, +2% time** vs the no-skill baseline — the ~65%
+  output-token claim is real but measures a layer agentic sessions barely spend
+  on (tokens are input-dominated: file reads, tool results), while its always-on
+  block is charged on every prompt. Its LOC benefit (-20%) is a strict subset of
+  ponytail's (-54%).
+- `.claude/settings.json` `UserPromptSubmit` hook now names `ponytail` only —
+  the sole always-on skill. Swept the wrappers and docs that claimed two:
+  `AGENTS.md` §8, `.cursor/rules/000-start-here.mdc`, `GENESIS.md` (tree, §4,
+  §F), `README.md` tree, `skills/README.md`, `skills/ponytail/SKILL.md` notes.
+- [ADR-0006](../architecture/adr/0006-drop-caveman-skill.md) records it and
+  partially supersedes ADR-0004 (caveman half only; ponytail stands). ADR-0004
+  marked split-status rather than edited. Skeleton bumped to **v0.6.0**.
+- **Next step:** nothing pending from this change. Worth revisiting at the next
+  upstream sync: ADR-0004 cites ponytail at "~80k★", which looks stale.
+
 ## 2026-07-12 — Cursor ships by default (v0.5.0)
 
 - Added `.cursor/rules/000-start-here.mdc` to the skeleton: alwaysApply pure

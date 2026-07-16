@@ -35,11 +35,7 @@ These ship with the Genesis skeleton and apply to any project:
   [upstream](https://github.com/DietrichGebert/ponytail), MIT): the "does this
   need to exist" ladder — YAGNI → reuse → stdlib → native → installed dep →
   one line → minimum code. Governs *how much* code exists; `clean-code` governs
-  its shape.
-- **`caveman`** — terse chat output (vendored from
-  [upstream](https://github.com/JuliusBrussee/caveman), MIT): drops filler,
-  pleasantries, and hedging from responses (~65% fewer output tokens);
-  technical content stays exact. Conversation only — never repo files.
+  its shape. The only always-on skill.
 
 ## Wiring (per tool in use)
 
@@ -52,7 +48,7 @@ frontmatter `description` is loaded until a skill is actually needed
   `ln -s ../../skills/<name> .claude/skills/<name>`. **Ships pre-wired** in the
   skeleton for every built-in skill.
 - **Cursor** — `.cursor/rules/000-start-here.mdc` (alwaysApply) names the
-  always-on skills and points here. **Ships pre-wired** in the skeleton.
+  always-on skill and points here. **Ships pre-wired** in the skeleton.
 - **Other tools** — their native skill/rule location, pointing back here;
   generated on demand for tools actually in use (`AGENTS.md` §7).
 

@@ -4,6 +4,17 @@ Versions of the **skeleton itself**, so a forked project knows what it diverged
 from and can cherry-pick upstream improvements. Forks: keep this file as-is (or
 delete it); your own history lives in `docs/memory/progress.md`.
 
+## v0.6.0 — 2026-07-16
+
+- **`caveman` skill removed**
+  ([ADR-0006](docs/architecture/adr/0006-drop-caveman-skill.md), partially
+  supersedes ADR-0004). Ponytail's benchmark ran caveman as a terse-prose
+  control: **+7% tokens, +3% cost, +2% time** vs the no-skill baseline — it cost
+  more than it saved, because agentic sessions are input-token-dominated and
+  compressing chat prose touches a rounding error. `ponytail` is now the sole
+  always-on skill; it already cuts LOC by more than double what caveman did.
+  Forks wanting terse output can re-vendor upstream.
+
 ## v0.5.0 — 2026-07-12
 
 - **Cursor ships by default** alongside Claude Code:

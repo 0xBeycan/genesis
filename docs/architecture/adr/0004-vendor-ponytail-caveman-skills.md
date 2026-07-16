@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted
+Accepted — the `caveman` half is **superseded by
+[ADR-0006](0006-drop-caveman-skill.md)** (skill removed; benchmark showed it
+costs tokens rather than saving them). Everything below about `ponytail` stands.
 
 ## Context
 
@@ -33,6 +35,9 @@ proxy risks provider prompt-cache hits and answer quality. Revisit only if
 context costs become a measured problem.
 
 ## Decision
+
+> Every `caveman` clause below is **retired** — see
+> [ADR-0006](0006-drop-caveman-skill.md). Read `ponytail` only.
 
 - **Vendor the distilled rulesets** as `skills/ponytail/` and `skills/caveman/`,
   always-on baselines alongside `clean-code`. No upstream hooks, plugins, or

@@ -99,7 +99,7 @@ docs/
   features/                 # spec-before-code template
   memory/                   # progress · context · decisions (the AI writes these every session)
 skills/                     # built-in skills: wrap-session · write-adr · review-own-diff
-                            #   clean-code · write-tests · ponytail · caveman
+                            #   clean-code · write-tests · ponytail
 .github/                    # quality-gate CI (templated) + PR template with the DoD
 CHANGELOG.md                # skeleton versions — what a fork diverged from
 ```

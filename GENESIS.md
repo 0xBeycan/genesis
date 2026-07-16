@@ -106,7 +106,7 @@ docs/
     decisions.md                   # short decision log (the "why", newest on top)
 skills/                            # portable, tool-agnostic SKILL.md capabilities
   README.md _template/ wrap-session/ write-adr/ review-own-diff/ clean-code/
-  write-tests/ ponytail/ caveman/
+  write-tests/ ponytail/
 .github/workflows/ci.yml           # templated quality-gate CI (no-op until filled)
 .gitignore .editorconfig ...       # ignores + baseline tooling config
 ```
@@ -218,9 +218,9 @@ them pick. Possible layers (not a checklist to force):
   same invariants (`docs/process/workflow.md`). Default to **vibe** while
   solo/pre-alpha; confirm when the spec lane + PR review takes over (alpha/beta).
 - **Skills** — the built-in general skills (`wrap-session`, `write-adr`,
-  `review-own-diff`, `clean-code`, `write-tests`, `ponytail`, `caveman`) ship
-  already; `ponytail` (minimal code) and `caveman` (terse chat output) are
-  always-on baselines ([ADR-0004](docs/architecture/adr/0004-vendor-ponytail-caveman-skills.md)).
+  `review-own-diff`, `clean-code`, `write-tests`, `ponytail`) ship already;
+  `ponytail` (minimal code) is the always-on baseline
+  ([ADR-0004](docs/architecture/adr/0004-vendor-ponytail-caveman-skills.md)).
   Ask whether to **research and add project-type skills** (from skill
   registries / the web) for the chosen stack, into `skills/`.
 - **Skill wiring (per tool in use)** — `skills/` stays the single source, but
@@ -304,7 +304,7 @@ Create the tree from §1. Guidance per file:
 
 - **`.cursor/rules/000-start-here.mdc`.** Ships by default (like `CLAUDE.md`).
   Front-matter `alwaysApply: true` + `description`. A pure pointer: read-order
-  list, always-on skills (`ponytail`, `caveman`), end-of-session checklist
+  list, the always-on skill (`ponytail`), end-of-session checklist
   pointer — no duplicated rule content. This is what auto-injects the protocol
   into Cursor.
 
