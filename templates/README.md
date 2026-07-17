@@ -19,7 +19,3 @@ All rules live in `AGENTS.md` — nothing is duplicated here, on purpose.
      visitor sees the shape of the project. Mirror the top level of AGENTS.md's
      repo map (a few key dirs, one line each); keep it brief and let AGENTS.md
      carry the full picture. -->
-
----
-
-This repository was bootstrapped with [Genesis](https://github.com/0xBeycan/genesis).

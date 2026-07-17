@@ -2,6 +2,40 @@
 
 > Newest entry on top. Each entry: what changed + the **Next step**.
 
+## 2026-07-17 — Dogfood run findings applied (v0.9.0)
+
+- The v0.8.0 protocol got its first end-to-end run (the founder's real
+  project, bootstrapped as a throwaway): it executed DREAM → MATERIALIZE and
+  ended green, with two mid-run repairs (git init; guard sequencing). The
+  run's report — 15 findings plus a founder review round — was applied
+  upstream in full as
+  [ADR-0009](../architecture/adr/0009-dogfood-recalibration.md).
+- `GENESIS.md`: build-first spine, options-form + propose-don't-transcribe
+  ground rules, per-surface scoping in PRODUCT, explicit UI layer + license
+  question in SHAPE & STACK, Claude Design return contract (handoff file +
+  samples, pointer chain), and a nine-step MATERIALIZE (git baseline first,
+  add-before-guard, marker enumeration, LICENSE write, strict single-trace
+  cleanup).
+- `templates/`: adoption-seed ADR deleted (fork ADRs start at 0001), memory
+  seeds and README footer no longer mention Genesis (`context.md`'s version
+  line is the one home), roadmap Phase 0 aligned with what bootstrap
+  actually completes, stale lettered-section FILL refs fixed, `write-tests`
+  FILL marker added. `docs/design/` stays out of the skeleton — MATERIALIZE
+  creates it (README with the canonical pointer + build-from-handoff rule)
+  only when a visual layer exists. Workshop entry files + hook now point
+  forks at `GENESIS.md`.
+- Same-day founder review tightened it (ADR-0009 items 11–13): DREAM is
+  understand-only — first-users/stakes/budget questions and the bootstrap
+  reality scan removed; market research moved to development-time spec-lane
+  work (Market table ships as an empty living form) — the interview
+  self-enters plan mode, the options form covers every founder with
+  modern-tech recommendations, fresh git history became the rule, and the
+  "Phase 1" residue (`AGENTS.md` §3, `conventions.md`, `automation.md`) +
+  the workshop README's fork-order drift were cleaned.
+- **Next step:** validation run — the founder re-bootstraps the same real
+  project from a fresh fork on v0.9.0 as its actual start; feed any remaining
+  friction back here.
+
 ## 2026-07-16 — GENESIS.md v2: founder-interview protocol (v0.8.0)
 
 - Rewrote `GENESIS.md` ground-up per the locked Q&A decisions

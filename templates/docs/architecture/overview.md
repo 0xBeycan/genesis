@@ -1,6 +1,6 @@
 # Architecture overview
 
-<!-- GENESIS:FILL — from interview sections C & D -->
+<!-- GENESIS:FILL — from the PRODUCT surface scoping and SHAPE & STACK -->
 
 ## Diagram
 

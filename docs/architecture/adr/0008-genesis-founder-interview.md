@@ -2,7 +2,9 @@
 
 ## Status
 
-Accepted
+Accepted — amended by [ADR-0009](0009-dogfood-recalibration.md) after the
+first dogfood run: the question form (options, not prose batches), the fork
+trace (single home; no adoption-seed ADR), and the ADR numbering changed.
 
 ## Context
 

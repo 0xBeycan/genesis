@@ -2,6 +2,13 @@
 
 > One short line per locked decision, newest on top, linking its ADR.
 
+- Dogfood recalibration (v0.9.0): build-first spine, understand-don't-vet
+  DREAM (market research deferred to development), plan-mode interview,
+  options-form questions for every founder, propose-don't-transcribe,
+  per-surface scoping before CONFIRM, Claude Design return contract,
+  fresh-history + guard resequencing, LICENSE restored, Genesis single-trace
+  in forks (adoption-seed ADR killed; fork ADRs start at 0001) →
+  [ADR-0009](../architecture/adr/0009-dogfood-recalibration.md)
 - GENESIS.md v2: single-mode, seven-phase, challenge-first founder interview;
   design phase with Claude Design handoff option; bootstrap ends with a green
   hello-world and a prepared first commit →

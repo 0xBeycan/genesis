@@ -2,7 +2,7 @@
 #
 # Ships with the skeleton and only runs once the skeleton sits at the repo
 # root (GitHub runs root workflows only). The command steps are echo-TODOs
-# until Phase 1 wires the real stack commands (docs/process/automation.md).
+# until bootstrap wires the real stack commands (docs/process/automation.md).
 
 name: ci
 
@@ -37,6 +37,8 @@ jobs:
       # syntax (Vue/Jinja/Handlebars). The prefix skips GitHub Actions
       # expression syntax, and the bracketed spellings keep this file from
       # matching itself. _template files are blank forms and stay exempt.
+      # GENESIS.md is exempt only while it exists — its deletion step drops
+      # that exclusion.
       - name: No placeholders left
         run: |
           ! git grep -nE '(^|[^$])[{][{]|GENESIS[:]FILL' -- '*.md' '*.mdc' '*.yml' '*.yaml' ':!*_template*' ':!GENESIS.md'

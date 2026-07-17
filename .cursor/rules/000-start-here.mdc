@@ -5,6 +5,9 @@ alwaysApply: true
 
 # START HERE (Genesis development)
 
+Forked to start a project? Read `GENESIS.md` first — the rules below are for
+developing Genesis itself.
+
 All rules live in root `AGENTS.md`; read it, then `docs/memory/` (context →
 progress → decisions). The product ships from `templates/` — any change there
 needs a `CHANGELOG.md` entry.

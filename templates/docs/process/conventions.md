@@ -45,10 +45,9 @@ failed. The runner/library is stack-specific; the rules are not.
 Tests are mandatory, not optional. The runner is stack-specific; the discipline
 is not.
 
-- **Pick a runner in Phase 1.** Every project configures a stack-appropriate test
-  runner before feature work starts — `{{TEST_RUNNER}}`, chosen for the stack
-  at bootstrap. Wire its command into `AGENTS.md` §6 and
-  `.github/workflows/ci.yml`.
+- **The runner is configured at bootstrap** — `{{TEST_RUNNER}}`, chosen for
+  the stack, with one smoke test green before the first commit. Its command
+  lives in `AGENTS.md` §6 and `.github/workflows/ci.yml`.
 - **Test-first, both lanes.** Write a failing test (or executable acceptance
   check) before the code that satisfies it — in the vibe lane too. An agent has
   no gut feeling for regressions; the failing test is its feedback loop.

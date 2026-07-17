@@ -1,6 +1,6 @@
 # Vision
 
-<!-- GENESIS:FILL — from interview section B. Keep it short and concrete. -->
+<!-- GENESIS:FILL — from the DREAM answers. Keep it short and concrete. -->
 
 ## Problem
 
@@ -20,8 +20,9 @@
 
 ## Market
 
-<!-- GENESIS:FILL — seeded from the bootstrap reality scan; keep it living.
-Post-MVP competitor deep-dives happen in the spec lane and update this table. -->
+<!-- Living form — starts empty at bootstrap. Competitor research happens
+during development (spec lane) to diversify and decide features; give each
+row a source + date. -->
 
 | Alternative | What they do well | Gap / weakness | Our angle |
 | ----------- | ----------------- | -------------- | --------- |

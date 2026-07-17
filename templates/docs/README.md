@@ -14,7 +14,7 @@ Who writes what:
 | `architecture/overview.md` | System architecture + diagram.                 |
 | `architecture/stack.md`  | Locked tech stack + versions.                    |
 | `architecture/adr/`      | ADRs — one per rejected alternative (`AGENTS.md` §3). |
-| `design/`                | Design system (only if there is a UI).           |
+| `design/`                | Design source + handoff (created at bootstrap; UI only). |
 | `process/workflow.md`    | The two lanes (vibe / spec) + shared invariants. |
 | `process/conventions.md` | Naming / API shape / logging / errors / commits. |
 | `process/security.md`    | Secrets, authz, input, dependencies, disclosure. |

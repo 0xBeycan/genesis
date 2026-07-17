@@ -2,7 +2,8 @@
 
 Rules for working on **this repo**: the Genesis skeleton itself. The product
 lives in [`templates/`](./templates/) — everything there ships to forks;
-everything outside it is our workshop.
+everything outside it is our workshop. **Forked to start a project? Read
+[`GENESIS.md`](./GENESIS.md) first — these workshop rules are not for you.**
 
 ## Session protocol
 
@@ -18,8 +19,9 @@ everything outside it is our workshop.
   and ships with a `CHANGELOG.md` entry (version bump) — CI enforces this.
 - **One home per rule.** A rule lives in exactly one file; everything else
   points to it. Product rules: `templates/AGENTS.md` §3. Workshop rules: this
-  file. Sole exception: wrappers and hooks may repeat the two safety-net
-  reminders (the always-on skill; the templates-change → CHANGELOG rule).
+  file. Sole exception: wrappers and hooks may repeat the safety-net
+  reminders (the always-on skill; the templates-change → CHANGELOG rule; the
+  fork → `GENESIS.md` pointer).
 - **The version lives only in `CHANGELOG.md`.**
 - **ADR threshold:** open an ADR (`docs/architecture/adr/`) when a live
   alternative was rejected or a decision would tempt a future undo; every

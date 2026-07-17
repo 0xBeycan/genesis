@@ -27,6 +27,8 @@ loop. See `conventions.md` §Testing.
 
 ## Notes
 
+<!-- GENESIS:FILL — name the chosen test runner below -->
+
 - The runner is stack-specific ({{TEST_RUNNER}} — chosen at bootstrap); its
   command lives in `AGENTS.md` §6 and `.github/workflows/ci.yml`.
 - Tests are part of the Definition of Done — run `review-own-diff` and

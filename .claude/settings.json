@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo 'Always-on skill: follow templates/skills/ponytail (write the least code that works) in EVERY response. This repo is the Genesis workshop — the product lives in templates/; any change there ships with a CHANGELOG.md entry.'",
+            "command": "echo 'Always-on skill: follow templates/skills/ponytail (write the least code that works) in EVERY response. This repo is the Genesis workshop — the product lives in templates/; any change there ships with a CHANGELOG.md entry. Forked to start a project? Read GENESIS.md first.'",
             "statusMessage": "Loading Genesis workshop context"
           }
         ]

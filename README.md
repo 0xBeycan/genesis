@@ -44,9 +44,10 @@ docs/          ← Genesis's own memory bank + ADRs
 
 1. Use this repository as a template (or fork it).
 2. Tell your coding agent: **"Follow `GENESIS.md`."**
-3. It interviews you, fills the skeleton's placeholders, moves `templates/`
-   to the repo root, and deletes the workshop files — leaving your project's
-   own governance foundation.
+3. It interviews you in plan/read-only mode, then — on your explicit yes —
+   sweeps the workshop files, moves `templates/` to the repo root, fills the
+   placeholders, and scaffolds a verified hello-world, leaving your project's
+   own foundation with the first commit prepared.
 
 From then on, every session just reads `AGENTS.md` + the memory bank and
 continues where the last one left off.

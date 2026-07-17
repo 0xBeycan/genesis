@@ -2,20 +2,21 @@
 
 Legend: `[ ]` todo · `[~]` in progress · `[x]` done
 
-## Phase 0 — Governance foundation
+## Phase 0 — Foundation (bootstrap completes this)
 
-- [x] Genesis skeleton in place (rules, docs, memory bank, ADR-0001)
-- [ ] Interview completed and placeholders filled <!-- mark [x] after interview -->
+<!-- GENESIS:FILL — tick every box below at MATERIALIZE (bootstrap itself does
+this work), then delete this comment. -->
 
-## Phase 1 — Scaffold
+- [ ] Governance in place: rules, docs tree, memory bank
+- [ ] Interview done; placeholders filled; `LICENSE` written
+- [ ] Hello-world scaffold with one passing smoke test
+- [ ] Real CI commands wired (`.github/workflows/ci.yml` ↔ `AGENTS.md` §6)
 
-- [ ] Code scaffold (apps/packages), build tooling, base config
-- [ ] CI + Definition-of-Done gate wired
-<!-- GENESIS:FILL — adjust to the chosen stack -->
+## Phase 1+ — Features (vibe lane default)
 
-## Phase 2+ — Features (vibe lane default)
-
-<!-- GENESIS:FILL — feature phases from interview section G -->
+<!-- GENESIS:FILL — one phase per feature cluster, named from the PRODUCT
+surface scoping; each phase says what "done" means. An existing prototype
+becomes its own named port phase (location: AGENTS.md §11). -->
 
 - [ ] {{...}}
 
@@ -29,4 +30,3 @@ Legend: `[ ]` todo · `[~]` in progress · `[x]` done
 > **Continuous (every phase):** pick a lane (`docs/process/workflow.md`) · obey
 > the shared invariants · record decisions (ADR when an alternative was
 > rejected) · DoD gate · update the memory bank every session.
-

@@ -4,6 +4,67 @@ Versions of the **skeleton itself**, so a forked project knows what it diverged
 from and can cherry-pick upstream improvements. Forks: keep this file as-is (or
 delete it); your own history lives in `docs/memory/progress.md`.
 
+## v0.9.0 — 2026-07-17
+
+- **Dogfood recalibration**
+  ([ADR-0009](docs/architecture/adr/0009-dogfood-recalibration.md)): the
+  first end-to-end run of the v0.8.0 protocol (a real project, bootstrapped
+  as a throwaway) fed 15 findings back into the product; a same-day founder
+  review tightened the result. The interview is now **build-first**: DREAM
+  shrinks to understanding the project (idea, first user, pain, the founder's
+  own differentiation, technicality) — the first-users-discovery, stakes, and
+  budget questions and the bootstrap reality scan are gone; market research
+  happens during development (spec lane) to diversify and decide features,
+  and `vision.md`'s Market table ships as an empty living form. The agent
+  runs the interview in the tool's plan/read-only mode (entered by itself)
+  and the only gate is CONFIRM's yes. Significant decisions are asked as
+  **option sets** for **every** founder — labeled recommendation first
+  (modern, proven tooling), 1–2 researched alternatives, a "talk it through"
+  escape; the tool's native question UI when it has one; plain language and
+  named costs for non-technical founders — and the agent must **propose, not
+  transcribe**: current alternatives and additive suggestions are required
+  output, marked as proposals. PRODUCT walks **every declared surface** at
+  roadmap-name level (UI → menus/pages/flows · API/SDK → exported surface ·
+  service → routes/jobs) before CONFIRM; SHAPE & STACK asks the UI layer
+  explicitly and restores the **license + copyright holder** question the
+  v0.8.0 rewrite had lost (forks were landing unlicensed — MATERIALIZE now
+  writes `LICENSE`).
+- **MATERIALIZE resequenced** into nine steps: a fresh-history baseline opens
+  it (`git init -b main` when `.git/` is missing — a fresh fork may have
+  none; the skeleton's own history is deleted and re-inited, so the fork
+  opens with its own first commit); Fill ends with a plain-grep **marker
+  enumeration** (a marker once survived the fill pass and only the guard
+  caught it); `git add -A` moves ahead of the local guard run (`git grep` is
+  blind to untracked files); deleting `GENESIS.md` also drops its `ci.yml`
+  exclusion. The Claude Design path gained a **return
+  contract**: `handoff.md` (design language + sample index) plus sample HTML
+  pages land in `docs/design/`, pointer chain README → handoff → samples, and
+  every future feature builds component by component from `handoff.md`. The
+  directory itself is created at MATERIALIZE, visual projects only — the
+  skeleton still ships none.
+- **Single-trace policy:** after materialize, Genesis is referenced only by
+  `context.md`'s skeleton-version line. The adoption-seed ADR left
+  `templates/` (a fork's ADR log opens at 0001 with the project's own first
+  decision), and the `decisions.md` seed line, `progress.md` version mention,
+  and README "bootstrapped with" footer are gone (v0.8.0 let the footer stay
+  — overruled).
+- Template fixes from the run: roadmap Phase 0 now carries the hello-world +
+  CI boxes bootstrap completes (ticked at MATERIALIZE); FILL comments cite
+  the new phase names instead of the pre-rewrite lettered sections;
+  `write-tests` got its missing FILL marker; an existing prototype becomes a
+  named **port phase** with its location recorded as an `AGENTS.md` §11
+  gotcha; package-name quick-checks note that registry APIs answer where
+  websites block plain fetches. The founder review's sweep also cleared the
+  "Phase 1" residue the report missed — `AGENTS.md` (§3 test rule, §5 repo-map
+  comment), `conventions.md` §Testing, `automation.md`, `security.md`, and
+  the CI template's header now say the runner, repo map, and real CI commands
+  land **at bootstrap**.
+- **Workshop:** root `CLAUDE.md`/`AGENTS.md`, the prompt hook, and the Cursor
+  rule now open with "forked to start a project? Read `GENESIS.md` first" — a
+  fork session was being steered into workshop-maintainer mode. The README's
+  fork walkthrough now matches the real order (sweep → move → fill) and notes
+  the plan-mode interview.
+
 ## v0.8.0 — 2026-07-16
 
 - **`GENESIS.md` rewritten from scratch as a founder-interview protocol**

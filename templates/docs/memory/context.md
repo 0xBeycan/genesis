@@ -4,7 +4,8 @@
 
 - **Stage:** {{STAGE}}
 - **Skeleton version:** {{GENESIS_VERSION}}
-  (from [Genesis](https://github.com/0xBeycan/genesis))
+  (from [Genesis](https://github.com/0xBeycan/genesis) — this line is the
+  repo's **only** Genesis reference, kept for upstream cherry-picks)
 - **Active constraints:** {{...}}
 - **Open questions:** {{...}}
 - **Hint for the next agent:** {{...}}

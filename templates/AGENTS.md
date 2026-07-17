@@ -46,8 +46,8 @@ Full ritual in `docs/process/ai-session-protocol.md`.
   implementation, not before.
 - **Module boundaries:** domains don't import each other; shared contracts live
   in one place. Small, single-responsibility files.
-- **Test-first, both lanes:** every project picks a stack-appropriate test runner
-  in Phase 1 and keeps it green. Behavior-changing code starts from a failing
+- **Test-first, both lanes:** the stack-appropriate test runner is configured
+  at bootstrap and stays green. Behavior-changing code starts from a failing
   test — in every lane. Details: `docs/process/conventions.md` §Testing.
 - **Definition of Done is a gate:** `docs/process/definition-of-done.md`.
 - **Two lanes, shared invariants:** work runs in a **vibe** or a **spec** lane
@@ -75,7 +75,8 @@ Detailed companion: docs/architecture/stack.md -->
 
 ## 5. Repo map
 
-<!-- GENESIS:FILL — target structure once the code scaffold lands (Phase 1) -->
+<!-- GENESIS:FILL — completed at bootstrap from the hello-world scaffold;
+extend as the structure grows -->
 
 ## 6. Commands
 
@@ -147,7 +148,8 @@ pre-generated (Claude Code: `.claude/agents/` · Cursor: `.cursor/agents/`). -->
 
 <!-- GENESIS:FILL — the highest-signal section. Capture the things an agent would
 get wrong without being told: surprising constraints, footguns, "always do X
-before Y", load-bearing files, things that look unused but aren't. Add to this
-list whenever you discover one. -->
+before Y", load-bearing files, things that look unused but aren't, an external
+prototype being ported (its location + quirks). Add to this list whenever you
+discover one. -->
 
 - {{...}}

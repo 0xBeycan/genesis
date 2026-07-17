@@ -1,14 +1,15 @@
 # Automation — make the gate enforce itself
 
-The Definition of Done is only real if something checks it. Wire these as the
-stack solidifies (Phase 1+), so the gate doesn't depend on anyone remembering.
+The Definition of Done is only real if something checks it. Bootstrap wires
+the CI commands; add the rest as the project solidifies, so the gate doesn't
+depend on anyone remembering.
 
 ## CI
 
 `.github/workflows/ci.yml` defines the quality gate (install · lint · typecheck ·
 test · build) and runs on `push` / `pull_request` from day one. The command
-steps ship as echo-TODOs — harmless until Phase 1 wires the real stack
-commands. The **"No placeholders left"** step is live from the start: it fails
+steps ship as echo-TODOs; bootstrap (MATERIALIZE) replaces them with the
+real stack commands. The **"No placeholders left"** step is live from the start: it fails
 while any interview placeholder or unresolved fill-marker survives, so a
 half-filled bootstrap can't pass silently. Replace with your platform's CI if
 not GitHub.

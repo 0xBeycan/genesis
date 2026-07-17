@@ -1,7 +1,7 @@
 # Security
 
-Baseline security expectations for every change. Stack-specific tooling is filled
-in Phase 1; the principles below hold from day one. The detailed companion to the
+Baseline security expectations for every change. Stack-specific tooling is
+filled at bootstrap; the principles below hold from day one. The detailed companion to the
 **Security** line in `definition-of-done.md` and the **deny-by-default** rule in
 `conventions.md`.
 
@@ -29,8 +29,8 @@ in Phase 1; the principles below hold from day one. The detailed companion to th
 - **Pin / constrain versions;** review what a new dependency pulls in before
   adding it. Prefer fewer, well-maintained deps.
 - **Automated vulnerability + update checks** ({{scanner / audit command —
-  pick the ecosystem's current one at bootstrap}}) wired into CI once the
-  stack exists.
+  pick the ecosystem's current one at bootstrap}}) wired into CI from
+  bootstrap.
 - **License check** — confirm new deps' licenses are compatible with the project.
 
 ## Reporting a vulnerability

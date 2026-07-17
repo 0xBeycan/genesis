@@ -2,5 +2,8 @@
 
 > One short line per locked decision, newest on top, linking its ADR.
 
-- Adopted the Genesis governance model (skeleton {{GENESIS_VERSION}}) →
-  [ADR-0001](../architecture/adr/0001-adopt-genesis-governance.md)
+<!-- GENESIS:FILL — the interview's locked decisions land here, one line each
+(overruled objections included); link an ADR where an alternative was
+rejected. -->
+
+- {{...}}

@@ -2,9 +2,9 @@
 
 > Newest entry on top. Each entry: what changed + the **Next step**.
 
-## {{DATE}} — Phase 0: governance foundation (from Genesis skeleton)
+## {{DATE}} — Phase 0: foundation bootstrapped
 
-- Bootstrapped from the Genesis skeleton ({{GENESIS_VERSION}} — recorded in
-  `context.md`): rules, docs tree, memory bank, skills, and CI are in place;
-  placeholders filled from the interview.
-- **Next step:** Phase 1 — code scaffold, then wire the real CI commands.
+- Governance (rules, docs tree, memory bank, skills) and a verified
+  hello-world scaffold — one passing smoke test, real CI commands — are in
+  place; placeholders filled from the interview.
+- **Next step:** {{the first feature phase, by its roadmap name}}.
